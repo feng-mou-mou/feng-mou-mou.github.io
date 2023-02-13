@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2022-04-24T13:36:39.245Z</updated>
+  <updated>2023-02-13T09:05:42.219Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,23 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>毕业设计-强化现实</title>
+    <link href="http://example.com/posts/1d4fcfd4/"/>
+    <id>http://example.com/posts/1d4fcfd4/</id>
+    <published>2023-02-13T08:56:11.000Z</published>
+    <updated>2023-02-13T09:05:42.219Z</updated>
+    
+    
+    
+    
+    <category term="毕设" scheme="http://example.com/categories/%E6%AF%95%E8%AE%BE/"/>
+    
+    
+    <category term="强化现实" scheme="http://example.com/tags/%E5%BC%BA%E5%8C%96%E7%8E%B0%E5%AE%9E/"/>
+    
+  </entry>
   
   <entry>
     <title>Web前端学习之jQuery学习（九）jQuery 其他方法</title>
@@ -471,30 +488,6 @@
       
     <summary type="html">&lt;h1 id=&quot;字符串基本知识&quot;&gt;&lt;a href=&quot;#字符串基本知识&quot; class=&quot;headerlink&quot; title=&quot;字符串基本知识&quot;&gt;&lt;/a&gt;字符串基本知识&lt;/h1&gt;&lt;p&gt;我们来通过在控制台输入一些基本的行来进行对字符串的学习。（可以打开浏览器按F12打开）  &lt;/p&gt;
 </summary>
-      
-    
-    
-    
-    <category term="Web前端学习" scheme="http://example.com/categories/Web%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/"/>
-    
-    
-    <category term="JavaScript学习" scheme="http://example.com/tags/JavaScript%E5%AD%A6%E4%B9%A0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Web前端学习之JavaScript学习（三）数字与运算符</title>
-    <link href="http://example.com/posts/c1130bff/"/>
-    <id>http://example.com/posts/c1130bff/</id>
-    <published>2022-04-03T07:16:21.000Z</published>
-    <updated>2022-04-24T13:27:31.207Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="数字类型"><a href="#数字类型" class="headerlink" title="数字类型"></a>数字类型</h1><p>在编程中，即使是人人熟知的最普遍的十进制数，也比想象的要复杂的多。我们使用不同的术语来描述不同类型的十进制数，例如：</p><ul><li><strong>整数</strong> 就是整数,例如 10, 400, 或者 -5.</li><li><strong>浮点数</strong> (浮点) 有小数点或小数位，例如 12.5，和 56.7786543。</li><li><strong>双精度</strong>是一种特定类型的浮点数，它们具有比标准浮点数更高的精度（这意味着它们精确到更大的小数位数）。</li></ul><p>有不同类型的数字系统,除了十进制外，还有：</p><ul><li><strong>二进制</strong> — 计算机的最基础语言—— 0 和 1</li><li><strong>八进制</strong> — 基数8，每列使用0-7</li><li><strong>十六进制</strong> — 基数16，每列使用0-9，然后使用a-f。 在CSS中设置颜色时，可能会遇到这些数字。</li></ul><p>与其他一些编程语言不同，JavaScript只有一个数据类型用来表示数字（包括 integers 和 decimals ），<code>Number</code>。 这意味着，在JavaScript中处理的任何类型的数字，都以完全相同的方式处理它们。</p><h1 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h1><p>运算符也称为操作符。<br>通过运算符可以对一个或多个值进行运算或操作。</p><h2 id="算术运算符"><a href="#算术运算符" class="headerlink" title="算术运算符"></a>算术运算符</h2><p>算术运算符是我们用来做和的基本运算符：</p><table><thead><tr><th align="left">运算符</th><th align="left">名称</th><th align="left">作用</th><th align="left">示例</th></tr></thead><tbody><tr><td align="left"><code>+</code></td><td align="left">加法</td><td align="left">两个数相加。</td><td align="left"><code>6 + 9</code></td></tr><tr><td align="left"><code>-</code></td><td align="left">减法</td><td align="left">从左边减去右边的数。</td><td align="left"><code>20 - 15</code></td></tr><tr><td align="left"><code>*</code></td><td align="left">乘法</td><td align="left">两个数相乘。</td><td align="left"><code>3 * 7</code></td></tr><tr><td align="left"><code>/</code></td><td align="left">除法</td><td align="left">用右边的数除左边的数</td><td align="left"><code>10 / 5</code></td></tr><tr><td align="left"><code>%</code></td><td align="left">求余(有时候也叫取模)</td><td align="left">在你将左边的数分成同右边数字相同的若干整数部分后，返回剩下的余数</td><td align="left"><code>8 % 3</code> (返回 2，8除以3的倍数，余下2 。)</td></tr><tr><td align="left"><code>**</code></td><td align="left">幂</td><td align="left">取底数的指数次方，即指数所指定的底数相乘。它在EcmaScript 2016 中首次引入。</td><td align="left"><code>5 ** 5</code> (返回 3125，相当于 <code>5 * 5 * 5 * 5 * 5</code> 。)</td></tr></tbody></table><h2 id="自增和自减运算符"><a href="#自增和自减运算符" class="headerlink" title="自增和自减运算符"></a>自增和自减运算符</h2><p>有时候，您需要反复把一个变量加1或减1。 这可以方便地使用增量（<code>++</code>）和递减（ <code>--</code> ）运算符来完成。</p><ul><li><p><code>++</code> 自增，可以使变量在原值的基础上自增1</p><ul><li><code>前++</code>(++a)：++a的值是变量的新值（自增后的值）</li><li><code>后++</code>(a++)：a++的值是变量的原值（自增前的值）</li></ul></li><li><p><code>--</code> 自减，可以使变量在原值的基础上自减1</p><ul><li><code>前--</code>(–a)：–a的值是变量的新值（自减后的值）</li><li><code>后--</code>(a–)：a–的值是变量的原值（自减前的值）</li></ul></li></ul><h2 id="逻辑运算符"><a href="#逻辑运算符" class="headerlink" title="逻辑运算符"></a>逻辑运算符</h2><ul><li><p>!非运算可以对一个布尔值进行取反，<code>true</code>变<code>false</code>，<code>false</code>变&#96;true&#96;&#96;</p><ul><li>当对非布尔值使用<code>!</code>时，会先将其转换为布尔值然后再取反</li><li>我们可以利用两个<code>!</code>来将其他的数据类型转换为布尔值</li></ul></li><li><p><code>&amp;&amp;</code> 可以对符号两侧的值进行<code>与</code>运算</p><ul><li>只有两端的值都为<code>true</code>时，才会返回<code>true</code>。只要有一个<code>false</code>就会返回<code>false</code></li><li>与是一个短路的与，如果第一个值是<code>false</code>，则不再检查第二个值</li><li>对于非布尔值，它会将其转换为布尔值然后做运算，并返回原值<ul><li>如果第一个值为<code>false</code>，则返回第一个值</li><li>如果第一个值为<code>true</code>，则返回第二个值</li></ul></li></ul></li><li><p><code>||</code> 可以对符号两侧的值进行<code>或</code>运算</p><ul><li>只有两端都是<code>false</code>时，才会返回<code>false</code>。只要有一个<code>true</code>，就会返回<code>true</code></li><li>或是短路的或，如果第一个值是<code>true</code>，则不再检查第二个值</li><li>对于非布尔值，它会将其转换为布尔值然后做运算，并返回原值<ul><li>如果第一个值为<code>true</code>，则返回第一个值</li><li>如果第一个值为<code>false</code>，则返回第二个值</li></ul></li></ul></li></ul><h2 id="赋值运算符"><a href="#赋值运算符" class="headerlink" title="赋值运算符"></a>赋值运算符</h2><p>赋值运算符是向变量分配值的运算符。比如<code>=</code>， 它只是将右边的值赋给左边的变量。</p><p>还有一些更复杂的类型，它们提供了有用的快捷方式，可以使您的代码更加清洁和高效。 最常见的如下：</p><table><thead><tr><th align="left">运算符</th><th align="left">名称</th><th align="left">作用</th><th align="left">示例</th><th align="left">等价于</th></tr></thead><tbody><tr><td align="left"><code>+=</code></td><td align="left">加法赋值</td><td align="left">右边的数值加上左边的变量，然后再返回新的变量。</td><td align="left"><code>x = 3;x += 4;</code></td><td align="left"><code>x = 3;x = x + 4;</code></td></tr><tr><td align="left"><code>-=</code></td><td align="left">减法赋值</td><td align="left">左边的变量减去右边的数值，然后再返回新的变量。</td><td align="left"><code>x = 6;x -= 3;</code></td><td align="left"><code>x = 6;x = x - 3;</code></td></tr><tr><td align="left"><code>*=</code></td><td align="left">乘法赋值</td><td align="left">左边的变量乘以右边的数值，然后再返回新的变量。</td><td align="left"><code>x = 2;x *= 3;</code></td><td align="left"><code>x = 2;x = x * 3;</code></td></tr><tr><td align="left"><code>/=</code></td><td align="left">除法赋值</td><td align="left">左边的变量除以右边的数值，然后再返回新的变量。</td><td align="left"><code>x = 10;x /= 5;</code></td><td align="left"><code>x = 10;x = x / 5;</code></td></tr></tbody></table><h2 id="比较运算符"><a href="#比较运算符" class="headerlink" title="比较运算符"></a>比较运算符</h2><p>有时，我们将要运行真&#x2F;假测试，然后根据该测试的结果进行相应的操作 - 为此，我们使用比较运算符。</p><table><thead><tr><th align="left">运算符</th><th align="left">名称</th><th align="left">作用</th><th align="left">示例</th></tr></thead><tbody><tr><td align="left"><code>===</code></td><td align="left">严格等于</td><td align="left">测试左右值是否相同</td><td align="left"><code>5 === 2 + 4</code></td></tr><tr><td align="left"><code>!==</code></td><td align="left">严格不等于</td><td align="left">测试左右值是否<strong>不</strong>相同</td><td align="left"><code>5 !== 2 + 3</code></td></tr><tr><td align="left"><code>&lt;</code></td><td align="left">小于</td><td align="left">测试左值是否小于右值。</td><td align="left"><code>10 &lt; 6</code></td></tr><tr><td align="left"><code>&gt;</code></td><td align="left">大于</td><td align="left">测试左值是否大于右值</td><td align="left"><code>10 &gt; 20</code></td></tr><tr><td align="left">&lt;&#x3D;</td><td align="left">小于或等于</td><td align="left">测试左值是否小于或等于右值。</td><td align="left"><code>3 &lt;= 2</code></td></tr><tr><td align="left">&gt;&#x3D;</td><td align="left">大于或等于</td><td align="left">测试左值是否大于或等于正确值。</td><td align="left"><code>5 &gt;= 4</code></td></tr></tbody></table><h2 id="三元运算符"><a href="#三元运算符" class="headerlink" title="三元运算符"></a>三元运算符</h2><ul><li><code>…?…:…</code> 语法：条件表达式<code>?</code>语句1<code>:</code>语句2</li><li>执行流程：<ul><li>先对条件表达式求值判断</li><li>如果判断结果为<code>true</code>，则执行语句1，并返回执行结果</li><li>如果判断结果为<code>false</code>，则执行语句2，并返回执行结果</li></ul></li></ul>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h1 id=&quot;数字类型&quot;&gt;&lt;a href=&quot;#数字类型&quot; class=&quot;headerlink&quot; title=&quot;数字类型&quot;&gt;&lt;/a&gt;数字类型&lt;/h1&gt;&lt;p&gt;在编程中，即使是人人熟知的最普遍的十进制数，也比想象的要复杂的多。我们使用不同的术语来描述不同类型的十进制数，例如：&lt;/p&gt;</summary>
       
     
     
