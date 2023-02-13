@@ -1,0 +1,218 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="theme-color" content="#349696"><meta name="author" content="山泽君"><meta name="copyright" content="山泽君"><meta name="generator" content="Hexo 5.4.2"><meta name="theme" content="hexo-theme-yun"><title>Web前端学习之JavaScript学习（六）条件语句与循环语句 | 山泽君的小站</title><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@900&amp;display=swap" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/star-markdown-css@0.2.4/dist/yun/yun-markdown.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prism-theme-vars/base.css"><script src="//at.alicdn.com/t/font_1140697_dxory92pb0h.js" async></script><script src="https://cdn.jsdelivr.net/npm/@unocss/runtime/mini.global.js"></script><script src="https://cdn.jsdelivr.net/npm/scrollreveal/dist/scrollreveal.min.js" defer></script><script>function initScrollReveal() {
+  [".post-card",".markdown-body img"].forEach((target)=> {
+    ScrollReveal().reveal(target);
+  })
+}
+document.addEventListener("DOMContentLoaded", initScrollReveal);
+document.addEventListener("pjax:success", initScrollReveal);
+</script><link rel="icon" type="image/svg+xml" href="/yun.svg"><link rel="mask-icon" href="/yun.svg" color="#349696"><link rel="preload" href="/css/hexo-theme-yun.css" as="style"><link rel="prefetch" href="/js/sidebar.js" as="script"><link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin><script id="yun-config">
+    window.Yun = {}
+    window.CONFIG = {"hostname":"example.com","root":"/","title":"山泽君的小站","version":"1.8.11","mode":"auto","copycode":true,"page":{"isPost":true},"i18n":{"placeholder":"搜索...","empty":"找不到您查询的内容: ${query}","hits":"找到 ${hits} 条结果","hits_time":"找到 ${hits} 条结果（用时 ${time} 毫秒）"},"anonymous_image":"https://cdn.jsdelivr.net/gh/YunYouJun/cdn/img/avatar/none.jpg","say":{"api":"https://el-bot-api.vercel.app/api/words/young"},"local_search":{"path":"/search.xml"},"fireworks":{"colors":null},"waline":{"config":{"enable":true,"serverURL":"https://blog-comment-76gk7ynrp-feng-mou-mou.vercel.app/","comment":true,"visitor":true,"placeholder":"黑泽白泽都可以发表意见~~","emoji":["https://cdn.jsdelivr.net/gh/walinejs/emojis@latest/bilibili/","https://cdn.jsdelivr.net/gh/walinejs/emojis@latest/weibo/","https://cdn.jsdelivr.net/gh/walinejs/emojis@latest/qq/"],"locale":{"placeholder":"填写邮箱，可以收到回复通知哦～"},"requiredMeta":["nick"],"el":"#waline","lang":"zh-CN"},"cdn":"https://cdn.jsdelivr.net/npm/@waline/client/dist/Waline.min.js","dark":"html.dark"},"vendors":{"darken":"https://cdn.jsdelivr.net/npm/darken@1.5.0"}};
+  </script><link rel="stylesheet" href="/css/hexo-theme-yun.css"><script src="/js/hexo-theme-yun.js" type="module"></script><link rel="alternate" href="/atom.xml" title="山泽君的小站" type="application/atom+xml"><link rel="preconnect" href="https://www.google-analytics.com" crossorigin><script async src="https://www.googletagmanager.com/gtag/js?id=G-1LL0D86CY9"></script><script>if (CONFIG.hostname === location.hostname) {
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-1LL0D86CY9');
+}</script><script data-ad-client="ca-pub-2245427233262012" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><script>(function(){
+  var bp = document.createElement('script');
+  var curProtocol = window.location.protocol.split(':')[0];
+  if (curProtocol === 'https') {
+    bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+  }
+  else {
+    bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+  }
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(bp, s);
+})();</script><!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','');</script><!-- End Google Tag Manager --><meta name="description" content="条件语句if … else 语句基本语法：if (condition) &amp;#123;   code to run if condition is true &amp;#125; else &amp;#123;   run some other code instead &amp;#125;  else if当我们想要两个以上的选择或结果时，就需要用到 else if 了 if (condition 1)&amp;#123; 	c">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Web前端学习之JavaScript学习（六）条件语句与循环语句">
+<meta property="og:url" content="http://example.com/posts/8fd4f246/index.html">
+<meta property="og:site_name" content="山泽君的小站">
+<meta property="og:description" content="条件语句if … else 语句基本语法：if (condition) &amp;#123;   code to run if condition is true &amp;#125; else &amp;#123;   run some other code instead &amp;#125;  else if当我们想要两个以上的选择或结果时，就需要用到 else if 了 if (condition 1)&amp;#123; 	c">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-04-07T12:44:55.000Z">
+<meta property="article:modified_time" content="2022-04-24T13:27:31.211Z">
+<meta property="article:author" content="山泽君">
+<meta property="article:tag" content="JavaScript学习">
+<meta name="twitter:card" content="summary"><script>(function() {
+  const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+  const setting = localStorage.getItem('darken-mode') || 'auto'
+  if (setting === 'dark' || (prefersDark && setting !== 'light'))
+    document.documentElement.classList.toggle('dark', true)
+})()</script></head><body><script defer src="https://cdn.jsdelivr.net/npm/animejs@latest"></script><script defer src="/js/ui/fireworks.js" type="module"></script><canvas class="fireworks"></canvas><div class="container"><a class="sidebar-toggle hty-icon-button" id="menu-btn"><div class="hamburger hamburger--spin" type="button"><span class="hamburger-box"><span class="hamburger-inner"></span></span></div></a><div class="sidebar-toggle sidebar-overlay"></div><aside class="sidebar"><script src="/js/sidebar.js" type="module"></script><ul class="sidebar-nav"><li class="sidebar-nav-item sidebar-nav-toc hty-icon-button sidebar-nav-active" data-target="post-toc-wrap" title="文章目录"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-list-ordered"></use></svg></li><li class="sidebar-nav-item sidebar-nav-overview hty-icon-button" data-target="site-overview-wrap" title="站点概览"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-passport-line"></use></svg></li></ul><div class="sidebar-panel" id="site-overview-wrap"><div class="site-info fix-top"><a class="site-author-avatar" href="/about/" title="山泽君"><img width="96" loading="lazy" src="/img/avatar.png" alt="山泽君"><span class="site-author-status" title="Looking for dawn.">🌊</span></a><div class="site-author-name"><a href="/about/">山泽君</a></div><span class="site-name">山泽君的小站</span><sub class="site-subtitle"></sub><div class="site-desciption"></div></div><nav class="site-state"><a class="site-state-item hty-icon-button icon-home" href="/" title="首页"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-home-4-line"></use></svg></span></a><div class="site-state-item"><a href="/archives/" title="归档"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-archive-line"></use></svg></span><span class="site-state-item-count">40</span></a></div><div class="site-state-item"><a href="/categories/" title="分类"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-folder-2-line"></use></svg></span><span class="site-state-item-count">2</span></a></div><div class="site-state-item"><a href="/tags/" title="标签"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-price-tag-3-line"></use></svg></span><span class="site-state-item-count">8</span></a></div><a class="site-state-item hty-icon-button" href="/about/#comment" title="留言板"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-clipboard-line"></use></svg></span></a></nav><hr style="margin-bottom:0.5rem"><div class="links-of-author"><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://github.com/feng-mou-mou" title="GitHub" target="_blank" style="color:#6e5494"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-github-line"></use></svg></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="mailto:172425937@qq.com" title="E-Mail" target="_blank" style="color:#8E71C1"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-mail-line"></use></svg></a></div><hr style="margin:0.5rem 1rem"><div class="links"><a class="links-item hty-icon-button" href="/links/" title="我的小伙伴们" style="color:dodgerblue"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-genderless-line"></use></svg></a></div><br><a class="links-item hty-icon-button" id="toggle-mode-btn" href="javascript:;" title="Mode" style="color: #f1cb64"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-contrast-2-line"></use></svg></a></div><div class="sidebar-panel sidebar-panel-active" id="post-toc-wrap"><div class="post-toc"><div class="post-toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9D%A1%E4%BB%B6%E8%AF%AD%E5%8F%A5"><span class="toc-number">1.</span> <span class="toc-text">条件语句</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#if-%E2%80%A6-else-%E8%AF%AD%E5%8F%A5"><span class="toc-number">1.1.</span> <span class="toc-text">if … else 语句</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%EF%BC%9A"><span class="toc-number">1.1.1.</span> <span class="toc-text">基本语法：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#else-if"><span class="toc-number">1.1.2.</span> <span class="toc-text">else if</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AF%94%E8%BE%83%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-number">1.1.3.</span> <span class="toc-text">比较运算符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-number">1.1.4.</span> <span class="toc-text">逻辑运算符</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#switch-%E8%AF%AD%E5%8F%A5"><span class="toc-number">1.2.</span> <span class="toc-text">switch 语句</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E5%85%83%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-number">1.3.</span> <span class="toc-text">三元运算符</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BE%AA%E7%8E%AF%E8%AF%AD%E5%8F%A5"><span class="toc-number">2.</span> <span class="toc-text">循环语句</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#for-%E5%BE%AA%E7%8E%AF"><span class="toc-number">2.1.</span> <span class="toc-text">for 循环</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B7%B3%E5%87%BA%E5%BE%AA%E7%8E%AF%E2%80%94break"><span class="toc-number">2.2.</span> <span class="toc-text">跳出循环—break</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B7%B3%E8%BF%87%E8%BF%AD%E4%BB%A3%E2%80%94continue"><span class="toc-number">2.3.</span> <span class="toc-text">跳过迭代—continue</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#while-%E8%AF%AD%E5%8F%A5%E5%92%8C-do-%E2%80%A6-while-%E8%AF%AD%E5%8F%A5"><span class="toc-number">2.4.</span> <span class="toc-text">while 语句和 do … while 语句</span></a></li></ol></li></ol></div></div></div></aside><main class="sidebar-translate" id="content"><div id="post"><article class="hty-card post-block" itemscope itemtype="https://schema.org/Article" style="--smc-primary:#349696;"><link itemprop="mainEntityOfPage" href="http://example.com/posts/8fd4f246/"><span hidden itemprop="author" itemscope itemtype="https://schema.org/Person"><meta itemprop="name" content="山泽君"><meta itemprop="description"></span><span hidden itemprop="publisher" itemscope itemtype="https://schema.org/Organization"><meta itemprop="name" content="山泽君的小站"></span><header class="post-header"><h1 class="post-title" itemprop="name headline">Web前端学习之JavaScript学习（六）条件语句与循环语句</h1><div class="post-meta"><div class="post-time"><span class="post-meta-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-calendar-line"></use></svg></span> <time title="创建时间：2022-04-07 20:44:55" itemprop="dateCreated datePublished" datetime="2022-04-07T20:44:55+08:00">2022-04-07</time><span class="post-meta-divider">-</span><span class="post-meta-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-calendar-2-line"></use></svg></span> <time title="修改时间：2022-04-24 21:27:31" itemprop="dateModified" datetime="2022-04-24T21:27:31+08:00">2022-04-24</time></div><span class="leancloud_visitors" id="/posts/8fd4f246/" data-flag-title="Web前端学习之JavaScript学习（六）条件语句与循环语句"><span class="post-meta-divider">-</span><span class="post-meta-item-icon" title="阅读次数"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-eye-line"></use></svg> <span class="leancloud-visitors-count"></span></span></span><span class="post-meta-divider">-</span><a href="#comment"><span class="post-meta-item-icon" title="评论数"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-chat-3-line"></use></svg> <span class="waline-comment-count" id="/posts/8fd4f246/"></span></span></a><div class="post-classify"><span class="post-category"> <span class="post-meta-item-icon" style="margin-right:3px;"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-folder-line"></use></svg></span><span itemprop="about" itemscope itemtype="https://schema.org/Thing"><a class="category-item" href="/categories/Web%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/" style="--text-color:var(--hty-text-color)" itemprop="url" rel="index"><span itemprop="text">Web前端学习</span></a></span></span><span class="post-tag"><span class="post-meta-divider">-</span><a class="tag-item" href="/tags/JavaScript%E5%AD%A6%E4%B9%A0/" style="--text-color:var(--hty-text-color)"><span class="post-meta-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-price-tag-3-line"></use></svg></span><span class="tag-name">JavaScript学习</span></a></span></div></div></header><section class="post-body" itemprop="articleBody"><div class="post-content markdown-body"><h1 id="条件语句"><a href="#条件语句" class="headerlink" title="条件语句"></a>条件语句</h1><h2 id="if-…-else-语句"><a href="#if-…-else-语句" class="headerlink" title="if … else 语句"></a>if … else 语句</h2><h3 id="基本语法："><a href="#基本语法：" class="headerlink" title="基本语法："></a>基本语法：</h3><pre class="language-js" data-language="js"><code class="language-js"><span class="token keyword">if</span> <span class="token punctuation">(</span>condition<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  code to run <span class="token keyword">if</span> condition is <span class="token boolean">true</span>
+<span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
+  run some other code instead
+<span class="token punctuation">&#125;</span></code></pre>
+
+<h3 id="else-if"><a href="#else-if" class="headerlink" title="else if"></a>else if</h3><p>当我们想要两个以上的选择或结果时，就需要用到 <strong>else if</strong> 了</p>
+<pre class="language-js" data-language="js"><code class="language-js"><span class="token keyword">if</span> <span class="token punctuation">(</span>condition <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+	code to run <span class="token keyword">if</span> condition <span class="token number">1</span> is <span class="token boolean">true</span>
+<span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>condition <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+	code to run <span class="token keyword">if</span> condition <span class="token number">1</span> is <span class="token boolean">false</span> and condition <span class="token number">2</span> is <span class="token boolean">true</span>
+<span class="token punctuation">&#125;</span> <span class="token keyword">else</span><span class="token punctuation">&#123;</span>
+ 	run some other code instead
+<span class="token punctuation">&#125;</span></code></pre>
+
+<h3 id="比较运算符"><a href="#比较运算符" class="headerlink" title="比较运算符"></a>比较运算符</h3><p>比较运算符是用来判断条件语句中的条件的。</p>
+<ul>
+<li><code>===</code> 和 <code>!==</code> — 判断一个值是否严格等于，或不等于另一个。</li>
+<li><code>&lt;</code> 和 <code>&gt;</code> — 判断一个值是否小于，或大于另一个。</li>
+<li><code>&lt;=</code> 和 <code>&gt;=</code> — 判断一个值是否小于或等于，或者大于或等于另一个。</li>
+</ul>
+<h3 id="逻辑运算符"><a href="#逻辑运算符" class="headerlink" title="逻辑运算符"></a>逻辑运算符</h3><ul>
+<li><code>&amp;&amp;</code> — 逻辑与; 使得并列两个或者更多的表达式成为可能，只有当这些表达式每一个都返回<code>true</code>时，整个表达式才会返回<code>true.</code></li>
+<li><code>||</code> — 逻辑或; 当两个或者更多表达式当中的任何一个返回 <code>true</code> 则整个表达式将会返回 <code>true</code>.</li>
+<li>! — 逻辑非; 对一个布尔值取反, 非true返回false,非false返回true.</li>
+</ul>
+<p><em>tips</em>：任何不是 <code>false</code>, <code>undefined</code>, <code>null</code>, <code>0</code>, <code>NaN</code> 的值，或一个空字符串（’’）在作为条件语句进行测试时实际返回true。</p>
+<h2 id="switch-语句"><a href="#switch-语句" class="headerlink" title="switch 语句"></a>switch 语句</h2><p><code>if...else</code> 语句主要适用于只有几个选择的情况，每个都需要相当数量的代码来运行，和&#x2F;或 的条件很复杂的情况（例如多个逻辑运算符）。对于只想将变量设置一系列为特定值的选项或根据条件打印特定语句的情况，使用 <code>switch</code> 语句会更加方便。</p>
+<p>下面是语法示例：</p>
+<pre class="language-js" data-language="js"><code class="language-js"><span class="token keyword">switch</span> <span class="token punctuation">(</span>expression<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  <span class="token keyword">case</span> choice1<span class="token operator">:</span>
+    run <span class="token keyword">this</span> code
+    <span class="token keyword">break</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">case</span> choice2<span class="token operator">:</span>
+    run <span class="token keyword">this</span> code instead
+    <span class="token keyword">break</span><span class="token punctuation">;</span>
+
+  <span class="token comment">// include as many cases as you like</span>
+
+  <span class="token keyword">default</span><span class="token operator">:</span>
+    actually<span class="token punctuation">,</span> just run <span class="token keyword">this</span> code
+<span class="token punctuation">&#125;</span></code></pre>
+
+
+
+<h2 id="三元运算符"><a href="#三元运算符" class="headerlink" title="三元运算符"></a>三元运算符</h2><p>如果我们只需要通过判断 true 或者 false 来选择的话，三元运算符会看起来更加方便简洁。</p>
+<p>下面是语法示例：</p>
+<pre class="language-js" data-language="js"><code class="language-js"><span class="token punctuation">(</span> condition <span class="token punctuation">)</span> <span class="token operator">?</span> run <span class="token keyword">this</span> code <span class="token operator">:</span> run <span class="token keyword">this</span> code instead</code></pre>
+
+
+
+<h1 id="循环语句"><a href="#循环语句" class="headerlink" title="循环语句"></a>循环语句</h1><h2 id="for-循环"><a href="#for-循环" class="headerlink" title="for 循环"></a>for 循环</h2><p>语法：</p>
+<pre class="language-js" data-language="js"><code class="language-js"><span class="token keyword">for</span> <span class="token punctuation">(</span>initializer<span class="token punctuation">;</span> exit<span class="token operator">-</span>condition<span class="token punctuation">;</span> final<span class="token operator">-</span>expression<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  <span class="token comment">// code to run</span>
+<span class="token punctuation">&#125;</span></code></pre>
+
+<ol>
+<li><p>关键字<code>for</code>，后跟一些括号。</p>
+</li>
+<li><p>在括号内，我们有三个项目，以分号分隔：</p>
+<ul>
+<li><p>一个<strong>初始化器</strong> - 这通常是一个设置为一个数字的变量，它被递增来计算循环运行的次数。它也有时被称为<strong>计数变量</strong>。</p>
+</li>
+<li><p>一个<strong>退出条件</strong> -如前面提到的，这个定义循环何时停止循环。这通常是一个表现为比较运算符的表达式，用于查看退出条件是否已满足的测试。</p>
+</li>
+<li><p>一个<strong>最终条件</strong> -这总是被判断（或运行），每个循环已经通过一个完整的迭代消失时间。它通常用于增加（或在某些情况下递减）计数器变量，使其更接近退出条件值。</p>
+</li>
+</ul>
+</li>
+<li><p>一些包含代码块的花括号 - 每次循环迭代时都会运行这个代码。</p>
+</li>
+</ol>
+<p>比如我们来看看下面这个例子：</p>
+<pre class="language-js" data-language="js"><code class="language-js"><span class="token keyword">var</span> cats <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'Bill'</span><span class="token punctuation">,</span> <span class="token string">'Jeff'</span><span class="token punctuation">,</span> <span class="token string">'Pete'</span><span class="token punctuation">,</span> <span class="token string">'Biggles'</span><span class="token punctuation">,</span> <span class="token string">'Jasmin'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> info <span class="token operator">=</span> <span class="token string">'My cats are called '</span><span class="token punctuation">;</span>
+
+<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">var</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> cats<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  info <span class="token operator">+=</span> cats<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token string">', '</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+info<span class="token punctuation">;</span>
+<span class="token comment">// returns 'My cats are called Bill, Jeff, Pete, Biggles, Jasmin, '</span></code></pre>
+
+
+
+<h2 id="跳出循环—break"><a href="#跳出循环—break" class="headerlink" title="跳出循环—break"></a>跳出循环—break</h2><p>如果要在所有迭代完成之前退出循环，可以使用break语句。</p>
+<p>比如：</p>
+<pre class="language-js" data-language="js"><code class="language-js"><span class="token keyword">var</span> cats <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'Bill'</span><span class="token punctuation">,</span> <span class="token string">'Jeff'</span><span class="token punctuation">,</span> <span class="token string">'Pete'</span><span class="token punctuation">,</span> <span class="token string">'Biggles'</span><span class="token punctuation">,</span> <span class="token string">'Jasmin'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> info <span class="token operator">=</span> <span class="token string">'My cats are called '</span><span class="token punctuation">;</span>
+
+<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">var</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> cats<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  info <span class="token operator">+=</span> cats<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token string">', '</span><span class="token punctuation">;</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>i <span class="token operator">===</span> <span class="token number">3</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+      <span class="token keyword">break</span><span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+info<span class="token punctuation">;</span>
+<span class="token comment">// returns 'My cats are called Bill, Jeff, Pete, Biggles, '</span></code></pre>
+
+
+
+<h2 id="跳过迭代—continue"><a href="#跳过迭代—continue" class="headerlink" title="跳过迭代—continue"></a>跳过迭代—continue</h2><p>continue语句以类似的方式工作，而不是完全跳出循环，而是跳过当前循环而执行下一个循环。</p>
+<p>再看看这个例子：</p>
+<pre class="language-js" data-language="js"><code class="language-js"><span class="token keyword">var</span> cats <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'Bill'</span><span class="token punctuation">,</span> <span class="token string">'Jeff'</span><span class="token punctuation">,</span> <span class="token string">'Pete'</span><span class="token punctuation">,</span> <span class="token string">'Biggles'</span><span class="token punctuation">,</span> <span class="token string">'Jasmin'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> info <span class="token operator">=</span> <span class="token string">'My cats are called '</span><span class="token punctuation">;</span>
+
+<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">var</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> cats<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>i <span class="token operator">===</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+      <span class="token keyword">continue</span><span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span>
+  info <span class="token operator">+=</span> cats<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token string">', '</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+info<span class="token punctuation">;</span>
+<span class="token comment">// returns 'My cats are called Bill, Jeff, Biggles, Jasmin, '</span></code></pre>
+
+
+
+<h2 id="while-语句和-do-…-while-语句"><a href="#while-语句和-do-…-while-语句" class="headerlink" title="while 语句和 do … while 语句"></a>while 语句和 do … while 语句</h2><p>while 循环的语法如下：</p>
+<pre class="language-none"><code class="language-none">initializer
+while (exit-condition) &#123;
+  &#x2F;&#x2F; code to run
+
+  final-expression
+&#125;</code></pre>
+
+<p>再来看看相同的例子用 while 怎么写：</p>
+<pre class="language-js" data-language="js"><code class="language-js"><span class="token keyword">var</span> cats <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'Bill'</span><span class="token punctuation">,</span> <span class="token string">'Jeff'</span><span class="token punctuation">,</span> <span class="token string">'Pete'</span><span class="token punctuation">,</span> <span class="token string">'Biggles'</span><span class="token punctuation">,</span> <span class="token string">'Jasmin'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> info <span class="token operator">=</span> <span class="token string">'My cats are called '</span><span class="token punctuation">;</span>
+
+<span class="token keyword">var</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token keyword">while</span> <span class="token punctuation">(</span>i <span class="token operator">&lt;</span> cats<span class="token punctuation">.</span>length<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    info <span class="token operator">+=</span> cats<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token string">', '</span><span class="token punctuation">;</span>
+  i<span class="token operator">++</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+
+info<span class="token punctuation">;</span>
+<span class="token comment">// returns 'My cats are called Bill, Jeff, Pete, Biggles, Jasmin, '</span></code></pre>
+
+<p>do … while 循环和 while 类似，只不过是在while后提供了终止条件。</p>
+<pre class="language-js" data-language="js"><code class="language-js"><span class="token keyword">var</span> cats <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'Bill'</span><span class="token punctuation">,</span> <span class="token string">'Jeff'</span><span class="token punctuation">,</span> <span class="token string">'Pete'</span><span class="token punctuation">,</span> <span class="token string">'Biggles'</span><span class="token punctuation">,</span> <span class="token string">'Jasmin'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> info <span class="token operator">=</span> <span class="token string">'My cats are called '</span><span class="token punctuation">;</span>
+
+<span class="token keyword">var</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token keyword">do</span> <span class="token punctuation">&#123;</span>
+  info <span class="token operator">+=</span> cats<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token string">', '</span><span class="token punctuation">;</span>
+  i<span class="token operator">++</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span> <span class="token keyword">while</span> <span class="token punctuation">(</span>i <span class="token operator">&lt;</span> cats<span class="token punctuation">.</span>length<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+info<span class="token punctuation">;</span>
+<span class="token comment">// returns 'My cats are called Bill, Jeff, Pete, Biggles, Jasmin, '</span></code></pre>
+
+</div></section><ul class="post-copyright"><li class="post-copyright-author"><strong>本文作者：</strong>山泽君</li><li class="post-copyright-link"><strong>本文链接：</strong><a href="http://example.com/posts/8fd4f246/" title="Web前端学习之JavaScript学习（六）条件语句与循环语句">http://example.com/posts/8fd4f246/</a></li><li class="post-copyright-license"><strong>版权声明：</strong>本博客所有文章除特别声明外，均默认采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener" title="CC BY-NC-SA 4.0 "><svg class="icon"><use xlink:href="#icon-creative-commons-line"></use></svg><svg class="icon"><use xlink:href="#icon-creative-commons-by-line"></use></svg><svg class="icon"><use xlink:href="#icon-creative-commons-nc-line"></use></svg><svg class="icon"><use xlink:href="#icon-creative-commons-sa-line"></use></svg></a> 许可协议。</li></ul></article><div class="post-nav"><div class="post-nav-item"><a class="post-nav-prev" href="/posts/f38b0477/" rel="prev" title="Web前端学习之JavaScript学习（七）函数的相关知识"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-arrow-left-s-line"></use></svg><span class="post-nav-text">Web前端学习之JavaScript学习（七）函数的相关知识</span></a></div><div class="post-nav-item"><a class="post-nav-next" href="/posts/d524613f/" rel="next" title="Web前端学习之JavaScript练习——做一个小项目：数字炸弹"><span class="post-nav-text">Web前端学习之JavaScript练习——做一个小项目：数字炸弹</span><svg class="icon" aria-hidden="true"><use xlink:href="#icon-arrow-right-s-line"></use></svg></a></div></div></div><div class="hty-card" id="comment"><div class="comment-tooltip text-center"><span>若您想及时得到回复提醒，建议跳转 GitHub Issues 评论</span><br><a class="hty-button hty-button--raised" id="github-issues" target="_blank" rel="noopener" href="https://github.com/feng-mou-mou/feng-mou-mou.github.io/issues?q=is:issue+Web前端学习之JavaScript学习（六）条件语句与循环语句">GitHub Issues</a></div><div id="waline"></div><script>window.CONFIG.waline.config.path = "/posts/8fd4f246/"</script><div class="js-Pjax"><script src="/js/comments/waline.js" type="module" defer></script></div></div></main><footer class="sidebar-translate" id="footer"><div class="beian"><a rel="noopener" href="https://beian.miit.gov.cn/" target="_blank"></a></div><div class="copyright"><span>&copy; 2019 – 2023 </span><span class="with-love" id="animate"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-cloud-line"></use></svg></span><span class="author"> 山泽君</span></div><div class="powered"><span>由 <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> 驱动 v5.4.2</span><span class="footer-separator">|</span><span>主题 - <a rel="noopener" href="https://github.com/YunYouJun/hexo-theme-yun" target="_blank"><span>Yun</span></a> v1.8.11</span></div></footer><a class="hty-icon-button" id="back-to-top" aria-label="back-to-top" href="#"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-arrow-up-s-line"></use></svg><svg class="progress-circle-container" viewBox="0 0 100 100"><circle class="progress-circle" id="progressCircle" cx="50" cy="50" r="48" fill="none" stroke="#349696" stroke-width="2" stroke-linecap="round"></circle></svg></a><a class="popup-trigger hty-icon-button icon-search" id="search" href="javascript:;" title="搜索"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-search-line"></use></svg></span></a><script>window.addEventListener("DOMContentLoaded", () => {
+  // Handle and trigger popup window
+  document.querySelector(".popup-trigger").addEventListener("click", () => {
+    document.querySelector(".popup").classList.add("show");
+    setTimeout(() => {
+      document.querySelector(".search-input").focus();
+    }, 100);
+  });
+
+  // Monitor main search box
+  const onPopupClose = () => {
+    document.querySelector(".popup").classList.remove("show");
+  };
+
+  document.querySelector(".popup-btn-close").addEventListener("click", () => {
+    onPopupClose();
+  });
+
+  window.addEventListener("keyup", event => {
+    if (event.key === "Escape") {
+      onPopupClose();
+    }
+  });
+});
+</script><script src="/js/search/local-search.js" defer type="module"></script><div class="popup search-popup"><div class="search-header"><span class="popup-btn-close close-icon hty-icon-button"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-close-line"></use></svg></span></div><div class="search-input-container"><input class="search-input" id="local-search-input" type="text" placeholder="搜索..." value=""></div><div id="local-search-result"></div></div></div><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body></html>
