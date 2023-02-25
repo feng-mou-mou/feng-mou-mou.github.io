@@ -45,8 +45,8 @@ http://example.com/tags/index.html
 http://example.com/about/index.html
 http://example.com/
 http://example.com/tags/Java%E5%88%B7%E9%A2%98/
-http://example.com/tags/CSS3%E5%AD%A6%E4%B9%A0/
 http://example.com/tags/Java%E5%89%8D%E6%9C%9F%E5%87%86%E5%A4%87/
+http://example.com/tags/CSS3%E5%AD%A6%E4%B9%A0/
 http://example.com/tags/HTML5%E5%AD%A6%E4%B9%A0/
 http://example.com/tags/JavaScript%E5%AD%A6%E4%B9%A0/
 http://example.com/tags/Less%E5%AD%A6%E4%B9%A0/
