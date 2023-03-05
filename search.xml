@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>百奥春招笔试题</title>
+      <link href="/posts/fc1d6a7/"/>
+      <url>/posts/fc1d6a7/</url>
+      
+        <content type="html"><![CDATA[<h1 id="题目情况"><a href="#题目情况" class="headerlink" title="题目情况"></a>题目情况</h1><p>前两题都算是送分题，第一题求和，第二题是最大对角线和。第三题是求包含0~max的最短子串长度，第四题是三角形最小路径和。</p><h1 id="第三题"><a href="#第三题" class="headerlink" title="第三题"></a>第三题</h1><p>给你一串数字nums和它的最大值maxnum，求得包含0~maxnum所有值的最短子串长度，并返回该长度，若不存在，则返回-1。</p><h2 id="思路分析"><a href="#思路分析" class="headerlink" title="思路分析"></a>思路分析</h2><p>我是用哈希表结合双指针来做的，从前往后依次读入，并更新哈希表，若该数在哈希表中value&#x3D;0，则将r指针指向该位置，同时去判断l指针所指的树在哈希表中的value值是否大于1，若是，则l指针右移，value值减一。遍历完数组可以得到包含该数组所有不重复元素的最小子串，再进行判断是否包含0~maxnum。若是则返回r-l+1，否则返回-1。</p><h1 id="第四题"><a href="#第四题" class="headerlink" title="第四题"></a>第四题</h1><p>给出一个三角形（数据数组），找出从上往下的最小路径和。每一步只能移动到下一行中的相邻结点上。</p><h2 id="思路分析-1"><a href="#思路分析-1" class="headerlink" title="思路分析"></a>思路分析</h2><p>因为我在宿舍做题并不是很专注，所以花了一段时间想动态规划并没有想出来，就用深搜去暴力了。答题结束后，这个动规方程就不难想出来了hhh。</p><p>dp[i][j]表示从第一行的顶点走到坐标为(i,j)位置的最短路径。dp[i][j]&#x3D;min(dp[i-1][j], dp[i-1][j-1])+triangle[i][j];<br>注意边界情况即可。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 数据结构和算法 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 笔试题 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>LeetCode刷题第一天</title>
       <link href="/posts/ff055d60/"/>
       <url>/posts/ff055d60/</url>
