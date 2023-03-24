@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>勇士传说(一)</title>
+      <link href="/posts/96e04cc8/"/>
+      <url>/posts/96e04cc8/</url>
+      
+        <content type="html"><![CDATA[<h1 id="基本介绍"><a href="#基本介绍" class="headerlink" title="基本介绍"></a>基本介绍</h1><p>《勇士传说》是一款横版卷轴动作类游戏，是来自M_Studio老师的教程，在这里会记录一个零基础小白的学习历程和学习过程中的思考。</p><h1 id="学习历程（已完成）"><a href="#学习历程（已完成）" class="headerlink" title="学习历程（已完成）"></a>学习历程（已完成）</h1><ul><li>导入素材（人物和场景）</li><li>了解编辑器窗口布局设定</li><li>了解熟悉 Tilemap 瓦片地图功能</li><li>素材图片切割方法</li><li>叠层概念</li><li>创建 Rule Tile 实现快速场景绘制</li><li>创建 Animated Tile 实现动态瀑布效果</li></ul><h1 id="学习中遇到的问题"><a href="#学习中遇到的问题" class="headerlink" title="学习中遇到的问题"></a>学习中遇到的问题</h1><ul><li>矩形工具选中删除（已解决）：按住shift</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 游戏开发 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 勇士传说 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>百奥春招笔试题</title>
       <link href="/posts/fc1d6a7/"/>
       <url>/posts/fc1d6a7/</url>
