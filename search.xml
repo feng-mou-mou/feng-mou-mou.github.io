@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>Lua快速入门</title>
+      <link href="/posts/71a33465/"/>
+      <url>/posts/71a33465/</url>
+      
+        <content type="html"><![CDATA[<h1 id="运行环境"><a href="#运行环境" class="headerlink" title="运行环境"></a>运行环境</h1><p><a href="https://wiki.luatos.com/_static/luatos-emulator/lua.html">luatOS在线测试</a></p><h1 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h1><p>变量声明：直接赋值（全局），加local只能在当前作用域里用； </p><p>没有被声明过的变量类型都是nil，值也是nil；</p><p>可以同时给多个变量赋值，比如 a,b &#x3D; 1,2</p><p>如果 a,b,c &#x3D; 1,2   则c&#x3D;nil</p><p>数值型：只有number，支持进制和科学计数法，支持乘幂符号，如2^5</p><h1 id="字符串的使用"><a href="#字符串的使用" class="headerlink" title="字符串的使用"></a>字符串的使用</h1><p>字符串：用双引号或者单引号表示，支持换行符\n</p><p>多行文本：[[……]]</p><p>字符串连接符号：”..”,如 a..b</p><p>tostring：数字转成字符串</p><p>tonumber：字符串转成数字</p><p>查看字符串长度:”#”,如 #a</p><h1 id="函数的使用"><a href="#函数的使用" class="headerlink" title="函数的使用"></a>函数的使用</h1><p>函数：</p><pre><code>function f(a,b)    print(a,b)end</code></pre><p>返回可以用return，可以返回多个值</p><h1 id="table的基本用途"><a href="#table的基本用途" class="headerlink" title="table的基本用途"></a>table的基本用途</h1><p>table：什么都可以存，a &#x3D; {1,”ac”,{},function() end};下标从1开始；</p><p>用#也可以获得table的长度</p><p>insert: 插入 ，如table.insert(a,”d”)；table.insert(a,2,”d”)</p><p>remove: 移除 ， 如 table.remove(a,2),并且返回移除的值</p><p>可以构造以字符串作为下标的table：如</p><pre><code>a = &#123;a=1,b=&quot;123&quot;,c=function()end&#125;a[&quot;a&quot;] = 1;</code></pre><p>全局表_G:所有元素都在全局表中</p><h1 id="逻辑判断"><a href="#逻辑判断" class="headerlink" title="逻辑判断"></a>逻辑判断</h1><p>逻辑判断：不等于是~&#x3D;;其他与C类似</p><p>支持 and 、or 、not</p><p>lua里数字0也代表真，nil代表假</p><p>三目运算： 如 b &gt; 10 and “yes” or “no”</p><h2 id="if语句"><a href="#if语句" class="headerlink" title="if语句"></a>if语句</h2><pre><code>if a&gt;10 then    print(1)elseif a&gt;5 then    print(2)else     print(0)end</code></pre><h1 id="循环"><a href="#循环" class="headerlink" title="循环"></a>循环</h1><h2 id="for循环"><a href="#for循环" class="headerlink" title="for循环"></a>for循环</h2><pre><code>for i = 1,10,2 do//从1到10 步长为2    print(i)end</code></pre><p>注：在for循环里不能对i进行修改，可以break</p><h2 id="while循环"><a href="#while循环" class="headerlink" title="while循环"></a>while循环</h2><pre><code>local n = 10while n &gt; 1 do    print(n)    n = n - 1 //lua里面不支持自减自加end</code></pre><h1 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h1><p>string.char：可以把ascll码变为字符串</p><p>string.byte: 可以直接取出一位，如 n &#x3D; string.byte(s,2)</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 游戏开发 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Lua </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Unity+Vuforia识别3D物体</title>
       <link href="/posts/1cd0ef1f/"/>
       <url>/posts/1cd0ef1f/</url>
