@@ -1,0 +1,184 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="theme-color" content="#349696"><meta name="author" content="山泽君"><meta name="copyright" content="山泽君"><meta name="generator" content="Hexo 5.4.2"><meta name="theme" content="hexo-theme-yun"><title>Web前端学习之CSS3学习（五）浮动属性（float）的相关设置以及高度塌陷与BFC | 山泽君的小站</title><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@900&amp;display=swap" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/star-markdown-css@0.2.4/dist/yun/yun-markdown.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prism-theme-vars/base.css"><script src="//at.alicdn.com/t/font_1140697_dxory92pb0h.js" async></script><script src="https://cdn.jsdelivr.net/npm/@unocss/runtime/mini.global.js"></script><script src="https://cdn.jsdelivr.net/npm/scrollreveal/dist/scrollreveal.min.js" defer></script><script>function initScrollReveal() {
+  [".post-card",".markdown-body img"].forEach((target)=> {
+    ScrollReveal().reveal(target);
+  })
+}
+document.addEventListener("DOMContentLoaded", initScrollReveal);
+document.addEventListener("pjax:success", initScrollReveal);
+</script><link rel="icon" type="image/svg+xml" href="/yun.svg"><link rel="mask-icon" href="/yun.svg" color="#349696"><link rel="preload" href="/css/hexo-theme-yun.css" as="style"><link rel="prefetch" href="/js/sidebar.js" as="script"><link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin><script id="yun-config">
+    window.Yun = {}
+    window.CONFIG = {"hostname":"example.com","root":"/","title":"山泽君的小站","version":"1.8.11","mode":"auto","copycode":true,"page":{"isPost":true},"i18n":{"placeholder":"搜索...","empty":"找不到您查询的内容: ${query}","hits":"找到 ${hits} 条结果","hits_time":"找到 ${hits} 条结果（用时 ${time} 毫秒）"},"anonymous_image":"https://cdn.jsdelivr.net/gh/YunYouJun/cdn/img/avatar/none.jpg","say":{"api":"https://el-bot-api.vercel.app/api/words/young"},"local_search":{"path":"/search.xml"},"fireworks":{"colors":null},"waline":{"config":{"enable":true,"serverURL":"https://blog-comment-76gk7ynrp-feng-mou-mou.vercel.app/","comment":true,"visitor":true,"placeholder":"黑泽白泽都可以发表意见~~","emoji":["https://cdn.jsdelivr.net/gh/walinejs/emojis@latest/bilibili/","https://cdn.jsdelivr.net/gh/walinejs/emojis@latest/weibo/","https://cdn.jsdelivr.net/gh/walinejs/emojis@latest/qq/"],"locale":{"placeholder":"填写邮箱，可以收到回复通知哦～"},"requiredMeta":["nick"],"el":"#waline","lang":"zh-CN"},"cdn":"https://cdn.jsdelivr.net/npm/@waline/client/dist/Waline.min.js","dark":"html.dark"},"vendors":{"darken":"https://cdn.jsdelivr.net/npm/darken@1.5.0"}};
+  </script><link rel="stylesheet" href="/css/hexo-theme-yun.css"><script src="/js/hexo-theme-yun.js" type="module"></script><link rel="alternate" href="/atom.xml" title="山泽君的小站" type="application/atom+xml"><link rel="preconnect" href="https://www.google-analytics.com" crossorigin><script async src="https://www.googletagmanager.com/gtag/js?id=G-1LL0D86CY9"></script><script>if (CONFIG.hostname === location.hostname) {
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-1LL0D86CY9');
+}</script><script data-ad-client="ca-pub-2245427233262012" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><script>(function(){
+  var bp = document.createElement('script');
+  var curProtocol = window.location.protocol.split(':')[0];
+  if (curProtocol === 'https') {
+    bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+  }
+  else {
+    bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+  }
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(bp, s);
+})();</script><!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','');</script><!-- End Google Tag Manager --><meta name="description" content="1. CSS 浮动CSS的浮动（float）定义元素在哪个方向浮动，且周围的元素也会重新排列。这个属性往往应用于图像，使文本围绕在图像周围，不过在 CSS 中，任何元素都可以浮动，所以在布局时一样很有用。 1.1 float属性   值 描述    left 元素向左浮动。   right 元素向右浮动。   none 默认值。元素不浮动，并会显示在其在文本中出现的位置。   inherit 规定">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Web前端学习之CSS3学习（五）浮动属性（float）的相关设置以及高度塌陷与BFC">
+<meta property="og:url" content="http://example.com/posts/eea05491/index.html">
+<meta property="og:site_name" content="山泽君的小站">
+<meta property="og:description" content="1. CSS 浮动CSS的浮动（float）定义元素在哪个方向浮动，且周围的元素也会重新排列。这个属性往往应用于图像，使文本围绕在图像周围，不过在 CSS 中，任何元素都可以浮动，所以在布局时一样很有用。 1.1 float属性   值 描述    left 元素向左浮动。   right 元素向右浮动。   none 默认值。元素不浮动，并会显示在其在文本中出现的位置。   inherit 规定">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-03-17T08:38:21.000Z">
+<meta property="article:modified_time" content="2022-04-24T13:27:32.000Z">
+<meta property="article:author" content="山泽君">
+<meta property="article:tag" content="CSS3学习">
+<meta name="twitter:card" content="summary"><script>(function() {
+  const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+  const setting = localStorage.getItem('darken-mode') || 'auto'
+  if (setting === 'dark' || (prefersDark && setting !== 'light'))
+    document.documentElement.classList.toggle('dark', true)
+})()</script></head><body><script defer src="https://cdn.jsdelivr.net/npm/animejs@latest"></script><script defer src="/js/ui/fireworks.js" type="module"></script><canvas class="fireworks"></canvas><div class="container"><a class="sidebar-toggle hty-icon-button" id="menu-btn"><div class="hamburger hamburger--spin" type="button"><span class="hamburger-box"><span class="hamburger-inner"></span></span></div></a><div class="sidebar-toggle sidebar-overlay"></div><aside class="sidebar"><script src="/js/sidebar.js" type="module"></script><ul class="sidebar-nav"><li class="sidebar-nav-item sidebar-nav-toc hty-icon-button sidebar-nav-active" data-target="post-toc-wrap" title="文章目录"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-list-ordered"></use></svg></li><li class="sidebar-nav-item sidebar-nav-overview hty-icon-button" data-target="site-overview-wrap" title="站点概览"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-passport-line"></use></svg></li></ul><div class="sidebar-panel" id="site-overview-wrap"><div class="site-info fix-top"><a class="site-author-avatar" href="/about/" title="山泽君"><img width="96" loading="lazy" src="/img/avatar.png" alt="山泽君"><span class="site-author-status" title="Looking for dawn.">🌊</span></a><div class="site-author-name"><a href="/about/">山泽君</a></div><span class="site-name">山泽君的小站</span><sub class="site-subtitle"></sub><div class="site-desciption"></div></div><nav class="site-state"><a class="site-state-item hty-icon-button icon-home" href="/" title="首页"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-home-4-line"></use></svg></span></a><div class="site-state-item"><a href="/archives/" title="归档"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-archive-line"></use></svg></span><span class="site-state-item-count">46</span></a></div><div class="site-state-item"><a href="/categories/" title="分类"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-folder-2-line"></use></svg></span><span class="site-state-item-count">5</span></a></div><div class="site-state-item"><a href="/tags/" title="标签"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-price-tag-3-line"></use></svg></span><span class="site-state-item-count">13</span></a></div><a class="site-state-item hty-icon-button" href="/about/#comment" title="留言板"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-clipboard-line"></use></svg></span></a></nav><hr style="margin-bottom:0.5rem"><div class="links-of-author"><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://github.com/feng-mou-mou" title="GitHub" target="_blank" style="color:#6e5494"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-github-line"></use></svg></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="mailto:172425937@qq.com" title="E-Mail" target="_blank" style="color:#8E71C1"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-mail-line"></use></svg></a></div><hr style="margin:0.5rem 1rem"><div class="links"><a class="links-item hty-icon-button" href="/links/" title="我的小伙伴们" style="color:dodgerblue"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-genderless-line"></use></svg></a></div><br><a class="links-item hty-icon-button" id="toggle-mode-btn" href="javascript:;" title="Mode" style="color: #f1cb64"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-contrast-2-line"></use></svg></a></div><div class="sidebar-panel sidebar-panel-active" id="post-toc-wrap"><div class="post-toc"><div class="post-toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-CSS-%E6%B5%AE%E5%8A%A8"><span class="toc-number">1.</span> <span class="toc-text">1. CSS 浮动</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-float%E5%B1%9E%E6%80%A7"><span class="toc-number">1.1.</span> <span class="toc-text">1.1 float属性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-%E6%B5%AE%E5%8A%A8%E7%9A%84%E6%80%A7%E8%B4%A8"><span class="toc-number">1.2.</span> <span class="toc-text">1.2 浮动的性质</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E9%AB%98%E5%BA%A6%E5%A1%8C%E9%99%B7"><span class="toc-number">2.</span> <span class="toc-text">2. 高度塌陷</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95"><span class="toc-number">2.1.</span> <span class="toc-text">2.1 解决方法</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-BFC"><span class="toc-number">3.</span> <span class="toc-text">3. BFC</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-clear"><span class="toc-number">4.</span> <span class="toc-text">4. clear</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-clearfix"><span class="toc-number">5.</span> <span class="toc-text">5. clearfix</span></a></li></ol></div></div></div></aside><main class="sidebar-translate" id="content"><div id="post"><article class="hty-card post-block" itemscope itemtype="https://schema.org/Article" style="--smc-primary:#349696;"><link itemprop="mainEntityOfPage" href="http://example.com/posts/eea05491/"><span hidden itemprop="author" itemscope itemtype="https://schema.org/Person"><meta itemprop="name" content="山泽君"><meta itemprop="description"></span><span hidden itemprop="publisher" itemscope itemtype="https://schema.org/Organization"><meta itemprop="name" content="山泽君的小站"></span><header class="post-header"><h1 class="post-title" itemprop="name headline">Web前端学习之CSS3学习（五）浮动属性（float）的相关设置以及高度塌陷与BFC</h1><div class="post-meta"><div class="post-time"><span class="post-meta-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-calendar-line"></use></svg></span> <time title="创建时间：2022-03-17 16:38:21" itemprop="dateCreated datePublished" datetime="2022-03-17T16:38:21+08:00">2022-03-17</time><span class="post-meta-divider">-</span><span class="post-meta-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-calendar-2-line"></use></svg></span> <time title="修改时间：2022-04-24 21:27:32" itemprop="dateModified" datetime="2022-04-24T21:27:32+08:00">2022-04-24</time></div><span class="leancloud_visitors" id="/posts/eea05491/" data-flag-title="Web前端学习之CSS3学习（五）浮动属性（float）的相关设置以及高度塌陷与BFC"><span class="post-meta-divider">-</span><span class="post-meta-item-icon" title="阅读次数"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-eye-line"></use></svg> <span class="leancloud-visitors-count"></span></span></span><span class="post-meta-divider">-</span><a href="#comment"><span class="post-meta-item-icon" title="评论数"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-chat-3-line"></use></svg> <span class="waline-comment-count" id="/posts/eea05491/"></span></span></a><div class="post-classify"><span class="post-category"> <span class="post-meta-item-icon" style="margin-right:3px;"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-folder-line"></use></svg></span><span itemprop="about" itemscope itemtype="https://schema.org/Thing"><a class="category-item" href="/categories/Web%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/" style="--text-color:var(--hty-text-color)" itemprop="url" rel="index"><span itemprop="text">Web前端学习</span></a></span></span><span class="post-tag"><span class="post-meta-divider">-</span><a class="tag-item" href="/tags/CSS3%E5%AD%A6%E4%B9%A0/" style="--text-color:orange"><span class="post-meta-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-price-tag-3-line"></use></svg></span><span class="tag-name">CSS3学习</span></a></span></div></div></header><section class="post-body" itemprop="articleBody"><div class="post-content markdown-body"><h1 id="1-CSS-浮动"><a href="#1-CSS-浮动" class="headerlink" title="1. CSS 浮动"></a>1. CSS 浮动</h1><p>CSS的<strong>浮动</strong>（float）定义元素在哪个方向浮动，且周围的元素也会重新排列。这个属性往往应用于图像，使文本围绕在图像周围，不过在 CSS 中，任何元素都可以浮动，所以在布局时一样很有用。</p>
+<h2 id="1-1-float属性"><a href="#1-1-float属性" class="headerlink" title="1.1 float属性"></a>1.1 float属性</h2><table>
+<thead>
+<tr>
+<th align="left">值</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">left</td>
+<td align="left">元素向左浮动。</td>
+</tr>
+<tr>
+<td align="left">right</td>
+<td align="left">元素向右浮动。</td>
+</tr>
+<tr>
+<td align="left">none</td>
+<td align="left">默认值。元素不浮动，并会显示在其在文本中出现的位置。</td>
+</tr>
+<tr>
+<td align="left">inherit</td>
+<td align="left">规定应该从父元素继承 float 属性的值。</td>
+</tr>
+</tbody></table>
+<h2 id="1-2-浮动的性质"><a href="#1-2-浮动的性质" class="headerlink" title="1.2 浮动的性质"></a>1.2 浮动的性质</h2><ul>
+<li>性质1：浮动的元素脱离标准文档流，所有标签，浮动之后，就不区分行内、块级了。</li>
+<li>性质2：浮动的元素互相贴靠。</li>
+<li>性质3：浮动的元素不会挡住文字，会形成“字围”效果。</li>
+<li>性质4：如果没有设置width，会自动收缩为内容的宽度。</li>
+</ul>
+<p>想对浮动性质有详细的了解，可以去阅读这位博主的博客<a target="_blank" rel="noopener" href="https://www.cnblogs.com/qianguyihao/p/7297736.html">link1</a></p>
+<h1 id="2-高度塌陷"><a href="#2-高度塌陷" class="headerlink" title="2. 高度塌陷"></a>2. 高度塌陷</h1><p>在文档流中，父元素的高度默认是被子元素撑开的，子元素多高，父元素就多高。但是当为子元素设置浮动以后，子元素会完全脱离文档流，此时就会导致子元素无法撑起父元素的高度，由此引发父元素的高度塌陷。如果此时下面有其他元素，一旦你的父元素的高度塌陷，那么下面的元素必然会往上拱，这样会使你的页面布局非常混乱。</p>
+<h2 id="2-1-解决方法"><a href="#2-1-解决方法" class="headerlink" title="2.1 解决方法"></a>2.1 解决方法</h2><ul>
+<li><p>直接给父元素加高度（不推荐）</p>
+<ul>
+<li>优点：代码简单，容易理解</li>
+<li>缺点：自适应性不强</li>
+</ul>
+</li>
+<li><p>利用clear:both;声明（不推荐）</p>
+<ul>
+<li>原理：clear:both清除span两边的浮动，让父级div能自动获取到高度</li>
+<li>优点：简单，代码少，所有主流浏览器都支持clear属性</li>
+<li>缺点：不易理解，添加空白元素造成代码冗余</li>
+</ul>
+</li>
+<li><p>利用BFC特性（推荐）</p>
+</li>
+</ul>
+<h1 id="3-BFC"><a href="#3-BFC" class="headerlink" title="3. BFC"></a>3. BFC</h1><p>BFC（Block Formatting Context）块级格式化环境</p>
+<ul>
+<li>BFC是一个CSS中的一个隐含的属性，可以为一个元素开启BFC</li>
+<li>开启BFC该元素会变成一个独立的布局区域</li>
+</ul>
+<p>元素触发BFC的条件</p>
+<ul>
+<li><p>html标签为BFC</p>
+</li>
+<li><p>float属性值不为none</p>
+</li>
+<li><p>overflow属性值不为visible</p>
+<p>既没有覆盖元素，也保持了独占一方的特性（保持了宽度），与下方元素也保持了最初的间隙<br>常用的方式为元素设置overflow:hidden（overflow:auto也是ok的） 开启其BFC， 以使其可以包含浮动元素<br>overflow:scroll 会有滚动条，可能并不需要的，所以不太推荐</p>
+</li>
+<li><p>display属性值为inline-block、table-cell、table-caption、flex、inline-flex其中之一</p>
+</li>
+<li><p>position属性值为absolute或fixed</p>
+</li>
+</ul>
+<p>开启BFC后元素的特点：</p>
+<ul>
+<li>不会被浮动元素覆盖</li>
+<li>父子元素外边距不会重叠</li>
+<li>可以包含浮动的元素</li>
+</ul>
+<h1 id="4-clear"><a href="#4-clear" class="headerlink" title="4. clear"></a>4. clear</h1><p><code>clear</code> 属性规定元素的哪一侧不允许其他浮动元素。</p>
+<table>
+<thead>
+<tr>
+<th>值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>left</td>
+<td>在左侧不允许浮动元素。</td>
+</tr>
+<tr>
+<td>right</td>
+<td>在右侧不允许浮动元素。</td>
+</tr>
+<tr>
+<td>both</td>
+<td>在左右两侧均不允许浮动元素。</td>
+</tr>
+<tr>
+<td>none</td>
+<td>默认值。允许浮动元素出现在两侧。</td>
+</tr>
+<tr>
+<td>inherit</td>
+<td>规定应该从父元素继承 clear 属性的值。</td>
+</tr>
+</tbody></table>
+<h1 id="5-clearfix"><a href="#5-clearfix" class="headerlink" title="5. clearfix"></a>5. clearfix</h1><p>总所周知的万能清除法:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.clearfix</span><span class="selector-pseudo">::after</span> &#123;</span><br><span class="line">  <span class="attribute">content</span>: <span class="string">&#x27;&#x27;</span>;</span><br><span class="line">  <span class="attribute">display</span>: block;</span><br><span class="line">  <span class="attribute">clear</span>: both;</span><br><span class="line">  <span class="attribute">visibility</span>: hidden;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这个方法的原理是什么呢？</p>
+<ol>
+<li>首先<code>::after</code>是元素的伪元素，在元素后面生成伪元素</li>
+<li><code>content </code>是伪元素的内容，为空，只是让伪元素不显示，显然不是原理</li>
+<li><code>height:0 </code>是为了让伪元素高度为0 ，显然不是</li>
+<li><code>visibility:hidden</code> 是为了伪元素浏览器渲染但不显示，显然也不是</li>
+<li><code>display: block </code>只是为了让伪元素成为块级元素，成为触发 <code>clear:both</code> 的条件，有点关</li>
+<li><code>clear:both</code> 规定在左右两侧不允许出现浮动元素， 这便是清除浮动的原理了</li>
+</ol>
+<p>想详细了解可以参考这位博主的博客<a target="_blank" rel="noopener" href="https://www.cnblogs.com/SuperBrother/p/12836340.html">link2</a></p>
+</div></section><ul class="post-copyright"><li class="post-copyright-author"><strong>本文作者：</strong>山泽君</li><li class="post-copyright-link"><strong>本文链接：</strong><a href="http://example.com/posts/eea05491/" title="Web前端学习之CSS3学习（五）浮动属性（float）的相关设置以及高度塌陷与BFC">http://example.com/posts/eea05491/</a></li><li class="post-copyright-license"><strong>版权声明：</strong>本博客所有文章除特别声明外，均默认采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener" title="CC BY-NC-SA 4.0 "><svg class="icon"><use xlink:href="#icon-creative-commons-line"></use></svg><svg class="icon"><use xlink:href="#icon-creative-commons-by-line"></use></svg><svg class="icon"><use xlink:href="#icon-creative-commons-nc-line"></use></svg><svg class="icon"><use xlink:href="#icon-creative-commons-sa-line"></use></svg></a> 许可协议。</li></ul></article><div class="post-nav"><div class="post-nav-item"><a class="post-nav-prev" href="/posts/5833b0a5/" rel="prev" title="Web前端学习之HTML5学习（二）列表（无序列表、有序列表、嵌套列表、自定义列表）及列表项的相关标签设置"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-arrow-left-s-line"></use></svg><span class="post-nav-text">Web前端学习之HTML5学习（二）列表（无序列表、有序列表、嵌套列表、自定义列表）及列表项的相关标签设置</span></a></div><div class="post-nav-item"><a class="post-nav-next" href="/posts/d249bed2/" rel="next" title="Web前端学习之CSS3学习（四）定位（position）的相关设置"><span class="post-nav-text">Web前端学习之CSS3学习（四）定位（position）的相关设置</span><svg class="icon" aria-hidden="true"><use xlink:href="#icon-arrow-right-s-line"></use></svg></a></div></div></div><div class="hty-card" id="comment"><div class="comment-tooltip text-center"><span>若您想及时得到回复提醒，建议跳转 GitHub Issues 评论</span><br><a class="hty-button hty-button--raised" id="github-issues" target="_blank" rel="noopener" href="https://github.com/feng-mou-mou/feng-mou-mou.github.io/issues?q=is:issue+Web前端学习之CSS3学习（五）浮动属性（float）的相关设置以及高度塌陷与BFC">GitHub Issues</a></div><div id="waline"></div><script>window.CONFIG.waline.config.path = "/posts/eea05491/"</script><div class="js-Pjax"><script src="/js/comments/waline.js" type="module" defer></script></div></div></main><footer class="sidebar-translate" id="footer"><div class="beian"><a rel="noopener" href="https://beian.miit.gov.cn/" target="_blank"></a></div><div class="copyright"><span>&copy; 2019 – 2024 </span><span class="with-love" id="animate"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-cloud-line"></use></svg></span><span class="author"> 山泽君</span></div><div class="powered"><span>由 <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> 驱动 v5.4.2</span><span class="footer-separator">|</span><span>主题 - <a rel="noopener" href="https://github.com/YunYouJun/hexo-theme-yun" target="_blank"><span>Yun</span></a> v1.8.11</span></div></footer><a class="hty-icon-button" id="back-to-top" aria-label="back-to-top" href="#"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-arrow-up-s-line"></use></svg><svg class="progress-circle-container" viewBox="0 0 100 100"><circle class="progress-circle" id="progressCircle" cx="50" cy="50" r="48" fill="none" stroke="#349696" stroke-width="2" stroke-linecap="round"></circle></svg></a><a class="popup-trigger hty-icon-button icon-search" id="search" href="javascript:;" title="搜索"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-search-line"></use></svg></span></a><script>window.addEventListener("DOMContentLoaded", () => {
+  // Handle and trigger popup window
+  document.querySelector(".popup-trigger").addEventListener("click", () => {
+    document.querySelector(".popup").classList.add("show");
+    setTimeout(() => {
+      document.querySelector(".search-input").focus();
+    }, 100);
+  });
+
+  // Monitor main search box
+  const onPopupClose = () => {
+    document.querySelector(".popup").classList.remove("show");
+  };
+
+  document.querySelector(".popup-btn-close").addEventListener("click", () => {
+    onPopupClose();
+  });
+
+  window.addEventListener("keyup", event => {
+    if (event.key === "Escape") {
+      onPopupClose();
+    }
+  });
+});
+</script><script src="/js/search/local-search.js" defer type="module"></script><div class="popup search-popup"><div class="search-header"><span class="popup-btn-close close-icon hty-icon-button"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-close-line"></use></svg></span></div><div class="search-input-container"><input class="search-input" id="local-search-input" type="text" placeholder="搜索..." value=""></div><div id="local-search-result"></div></div></div><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body></html>

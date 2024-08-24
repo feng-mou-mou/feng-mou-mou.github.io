@@ -1,0 +1,198 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="theme-color" content="#349696"><meta name="author" content="山泽君"><meta name="copyright" content="山泽君"><meta name="generator" content="Hexo 5.4.2"><meta name="theme" content="hexo-theme-yun"><title>Web前端学习之CSS3学习（九）过渡、动画、变换 | 山泽君的小站</title><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@900&amp;display=swap" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/star-markdown-css@0.2.4/dist/yun/yun-markdown.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prism-theme-vars/base.css"><script src="//at.alicdn.com/t/font_1140697_dxory92pb0h.js" async></script><script src="https://cdn.jsdelivr.net/npm/@unocss/runtime/mini.global.js"></script><script src="https://cdn.jsdelivr.net/npm/scrollreveal/dist/scrollreveal.min.js" defer></script><script>function initScrollReveal() {
+  [".post-card",".markdown-body img"].forEach((target)=> {
+    ScrollReveal().reveal(target);
+  })
+}
+document.addEventListener("DOMContentLoaded", initScrollReveal);
+document.addEventListener("pjax:success", initScrollReveal);
+</script><link rel="icon" type="image/svg+xml" href="/yun.svg"><link rel="mask-icon" href="/yun.svg" color="#349696"><link rel="preload" href="/css/hexo-theme-yun.css" as="style"><link rel="prefetch" href="/js/sidebar.js" as="script"><link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin><script id="yun-config">
+    window.Yun = {}
+    window.CONFIG = {"hostname":"example.com","root":"/","title":"山泽君的小站","version":"1.8.11","mode":"auto","copycode":true,"page":{"isPost":true},"i18n":{"placeholder":"搜索...","empty":"找不到您查询的内容: ${query}","hits":"找到 ${hits} 条结果","hits_time":"找到 ${hits} 条结果（用时 ${time} 毫秒）"},"anonymous_image":"https://cdn.jsdelivr.net/gh/YunYouJun/cdn/img/avatar/none.jpg","say":{"api":"https://el-bot-api.vercel.app/api/words/young"},"local_search":{"path":"/search.xml"},"fireworks":{"colors":null},"waline":{"config":{"enable":true,"serverURL":"https://blog-comment-76gk7ynrp-feng-mou-mou.vercel.app/","comment":true,"visitor":true,"placeholder":"黑泽白泽都可以发表意见~~","emoji":["https://cdn.jsdelivr.net/gh/walinejs/emojis@latest/bilibili/","https://cdn.jsdelivr.net/gh/walinejs/emojis@latest/weibo/","https://cdn.jsdelivr.net/gh/walinejs/emojis@latest/qq/"],"locale":{"placeholder":"填写邮箱，可以收到回复通知哦～"},"requiredMeta":["nick"],"el":"#waline","lang":"zh-CN"},"cdn":"https://cdn.jsdelivr.net/npm/@waline/client/dist/Waline.min.js","dark":"html.dark"},"vendors":{"darken":"https://cdn.jsdelivr.net/npm/darken@1.5.0"}};
+  </script><link rel="stylesheet" href="/css/hexo-theme-yun.css"><script src="/js/hexo-theme-yun.js" type="module"></script><link rel="alternate" href="/atom.xml" title="山泽君的小站" type="application/atom+xml"><link rel="preconnect" href="https://www.google-analytics.com" crossorigin><script async src="https://www.googletagmanager.com/gtag/js?id=G-1LL0D86CY9"></script><script>if (CONFIG.hostname === location.hostname) {
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-1LL0D86CY9');
+}</script><script data-ad-client="ca-pub-2245427233262012" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><script>(function(){
+  var bp = document.createElement('script');
+  var curProtocol = window.location.protocol.split(':')[0];
+  if (curProtocol === 'https') {
+    bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+  }
+  else {
+    bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+  }
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(bp, s);
+})();</script><!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','');</script><!-- End Google Tag Manager --><meta name="description" content="1. 过渡CSS3 过渡是元素从一种样式逐渐改变为另一种的效果。 过渡效果一般由浏览器直接改变元素的CSS属性实现。 1.1 属性 transition：简写属性，用于在一个属性中设置四个过渡属性。  必须指明持续时间 如果要写延迟，则两个时间中第一个是持续时间，第二个是延迟时间   transition-property：规定应用过渡的 CSS 属性的名称。  多个属性间使用,隔开 如果所有属性">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Web前端学习之CSS3学习（九）过渡、动画、变换">
+<meta property="og:url" content="http://example.com/posts/2f13e15b/index.html">
+<meta property="og:site_name" content="山泽君的小站">
+<meta property="og:description" content="1. 过渡CSS3 过渡是元素从一种样式逐渐改变为另一种的效果。 过渡效果一般由浏览器直接改变元素的CSS属性实现。 1.1 属性 transition：简写属性，用于在一个属性中设置四个过渡属性。  必须指明持续时间 如果要写延迟，则两个时间中第一个是持续时间，第二个是延迟时间   transition-property：规定应用过渡的 CSS 属性的名称。  多个属性间使用,隔开 如果所有属性">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-03-21T08:05:47.000Z">
+<meta property="article:modified_time" content="2022-04-24T13:27:32.000Z">
+<meta property="article:author" content="山泽君">
+<meta property="article:tag" content="CSS3学习">
+<meta name="twitter:card" content="summary"><script>(function() {
+  const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+  const setting = localStorage.getItem('darken-mode') || 'auto'
+  if (setting === 'dark' || (prefersDark && setting !== 'light'))
+    document.documentElement.classList.toggle('dark', true)
+})()</script></head><body><script defer src="https://cdn.jsdelivr.net/npm/animejs@latest"></script><script defer src="/js/ui/fireworks.js" type="module"></script><canvas class="fireworks"></canvas><div class="container"><a class="sidebar-toggle hty-icon-button" id="menu-btn"><div class="hamburger hamburger--spin" type="button"><span class="hamburger-box"><span class="hamburger-inner"></span></span></div></a><div class="sidebar-toggle sidebar-overlay"></div><aside class="sidebar"><script src="/js/sidebar.js" type="module"></script><ul class="sidebar-nav"><li class="sidebar-nav-item sidebar-nav-toc hty-icon-button sidebar-nav-active" data-target="post-toc-wrap" title="文章目录"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-list-ordered"></use></svg></li><li class="sidebar-nav-item sidebar-nav-overview hty-icon-button" data-target="site-overview-wrap" title="站点概览"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-passport-line"></use></svg></li></ul><div class="sidebar-panel" id="site-overview-wrap"><div class="site-info fix-top"><a class="site-author-avatar" href="/about/" title="山泽君"><img width="96" loading="lazy" src="/img/avatar.png" alt="山泽君"><span class="site-author-status" title="Looking for dawn.">🌊</span></a><div class="site-author-name"><a href="/about/">山泽君</a></div><span class="site-name">山泽君的小站</span><sub class="site-subtitle"></sub><div class="site-desciption"></div></div><nav class="site-state"><a class="site-state-item hty-icon-button icon-home" href="/" title="首页"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-home-4-line"></use></svg></span></a><div class="site-state-item"><a href="/archives/" title="归档"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-archive-line"></use></svg></span><span class="site-state-item-count">46</span></a></div><div class="site-state-item"><a href="/categories/" title="分类"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-folder-2-line"></use></svg></span><span class="site-state-item-count">5</span></a></div><div class="site-state-item"><a href="/tags/" title="标签"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-price-tag-3-line"></use></svg></span><span class="site-state-item-count">13</span></a></div><a class="site-state-item hty-icon-button" href="/about/#comment" title="留言板"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-clipboard-line"></use></svg></span></a></nav><hr style="margin-bottom:0.5rem"><div class="links-of-author"><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://github.com/feng-mou-mou" title="GitHub" target="_blank" style="color:#6e5494"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-github-line"></use></svg></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="mailto:172425937@qq.com" title="E-Mail" target="_blank" style="color:#8E71C1"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-mail-line"></use></svg></a></div><hr style="margin:0.5rem 1rem"><div class="links"><a class="links-item hty-icon-button" href="/links/" title="我的小伙伴们" style="color:dodgerblue"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-genderless-line"></use></svg></a></div><br><a class="links-item hty-icon-button" id="toggle-mode-btn" href="javascript:;" title="Mode" style="color: #f1cb64"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-contrast-2-line"></use></svg></a></div><div class="sidebar-panel sidebar-panel-active" id="post-toc-wrap"><div class="post-toc"><div class="post-toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E8%BF%87%E6%B8%A1"><span class="toc-number">1.</span> <span class="toc-text">1. 过渡</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-%E5%B1%9E%E6%80%A7"><span class="toc-number">1.1.</span> <span class="toc-text">1.1 属性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-%E4%B8%8E%E5%8A%A8%E7%94%BB%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">1.2.</span> <span class="toc-text">1.2 与动画的区别</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E5%8A%A8%E7%94%BB"><span class="toc-number">2.</span> <span class="toc-text">2. 动画</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-%E5%B1%9E%E6%80%A7"><span class="toc-number">2.1.</span> <span class="toc-text">2.1 属性</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-%E5%8F%98%E6%8D%A2"><span class="toc-number">3.</span> <span class="toc-text">3. 变换</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1-%E5%B8%B8%E7%94%A8%E7%9A%84-%EF%BC%9A"><span class="toc-number">3.1.</span> <span class="toc-text">3.1 常用的**：</span></a></li></ol></li></ol></div></div></div></aside><main class="sidebar-translate" id="content"><div id="post"><article class="hty-card post-block" itemscope itemtype="https://schema.org/Article" style="--smc-primary:#349696;"><link itemprop="mainEntityOfPage" href="http://example.com/posts/2f13e15b/"><span hidden itemprop="author" itemscope itemtype="https://schema.org/Person"><meta itemprop="name" content="山泽君"><meta itemprop="description"></span><span hidden itemprop="publisher" itemscope itemtype="https://schema.org/Organization"><meta itemprop="name" content="山泽君的小站"></span><header class="post-header"><h1 class="post-title" itemprop="name headline">Web前端学习之CSS3学习（九）过渡、动画、变换</h1><div class="post-meta"><div class="post-time"><span class="post-meta-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-calendar-line"></use></svg></span> <time title="创建时间：2022-03-21 16:05:47" itemprop="dateCreated datePublished" datetime="2022-03-21T16:05:47+08:00">2022-03-21</time><span class="post-meta-divider">-</span><span class="post-meta-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-calendar-2-line"></use></svg></span> <time title="修改时间：2022-04-24 21:27:32" itemprop="dateModified" datetime="2022-04-24T21:27:32+08:00">2022-04-24</time></div><span class="leancloud_visitors" id="/posts/2f13e15b/" data-flag-title="Web前端学习之CSS3学习（九）过渡、动画、变换"><span class="post-meta-divider">-</span><span class="post-meta-item-icon" title="阅读次数"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-eye-line"></use></svg> <span class="leancloud-visitors-count"></span></span></span><span class="post-meta-divider">-</span><a href="#comment"><span class="post-meta-item-icon" title="评论数"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-chat-3-line"></use></svg> <span class="waline-comment-count" id="/posts/2f13e15b/"></span></span></a><div class="post-classify"><span class="post-category"> <span class="post-meta-item-icon" style="margin-right:3px;"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-folder-line"></use></svg></span><span itemprop="about" itemscope itemtype="https://schema.org/Thing"><a class="category-item" href="/categories/Web%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/" style="--text-color:var(--hty-text-color)" itemprop="url" rel="index"><span itemprop="text">Web前端学习</span></a></span></span><span class="post-tag"><span class="post-meta-divider">-</span><a class="tag-item" href="/tags/CSS3%E5%AD%A6%E4%B9%A0/" style="--text-color:orange"><span class="post-meta-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-price-tag-3-line"></use></svg></span><span class="tag-name">CSS3学习</span></a></span></div></div></header><section class="post-body" itemprop="articleBody"><div class="post-content markdown-body"><h1 id="1-过渡"><a href="#1-过渡" class="headerlink" title="1. 过渡"></a>1. 过渡</h1><p><strong>CSS3 过渡是元素从一种样式逐渐改变为另一种的效果。</strong></p>
+<p>过渡效果一般由浏览器直接改变元素的CSS属性实现。</p>
+<h2 id="1-1-属性"><a href="#1-1-属性" class="headerlink" title="1.1 属性"></a>1.1 属性</h2><ol>
+<li><p><code>transition</code>：简写属性，用于在一个属性中设置四个过渡属性。</p>
+<ul>
+<li>必须指明持续时间</li>
+<li>如果要写延迟，则两个时间中第一个是持续时间，第二个是延迟时间</li>
+</ul>
+</li>
+<li><p><code>transition-property</code>：规定应用过渡的 CSS 属性的名称。</p>
+<ul>
+<li>多个属性间使用<code>,</code>隔开</li>
+<li>如果所有属性都需要过渡，则使用<code>all</code>关键字（默认值）</li>
+<li>大部分属性都支持过渡效果</li>
+<li>注意过渡时必须是从一个<code>有效数值</code>向另外一个<code>有效数值</code>进行过渡</li>
+</ul>
+</li>
+<li><p><code>transition-duration</code>：定义过渡效果花费的时间。默认是 0。</p>
+<ul>
+<li>时间单位：<code>s</code>和<code>ms</code></li>
+</ul>
+</li>
+<li><p><code>transition-timing-function</code>： 规定过渡效果的时间曲线。默认是 “ease”。</p>
+<ul>
+<li><p><code>ease</code> 默认值，慢速开始，先加速后减速</p>
+</li>
+<li><p><code>linear</code> 匀速运动</p>
+</li>
+<li><p><code>ease-in</code> 加速运动</p>
+</li>
+<li><p><code>ease-out</code> 减速运动</p>
+</li>
+<li><p><code>ease-in-out</code> 先加速后减速（<a target="_blank" rel="noopener" href="https://blog.csdn.net/u011143548/article/details/116756769">与ease的区别</a>）</p>
+</li>
+<li><p><code>cubic-bezier()</code> 指定时序函数</p>
+</li>
+<li><p><code>steps()</code> 分步执行过渡效果，第一个参数表示分几步，第二个参数可选：</p>
+<ul>
+<li><code>end</code> 在时间结束时执行过渡（默认值）</li>
+<li><code>start</code> 在时间开始时执行过渡</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><code>transition-delay</code>：规定过渡效果何时开始（延迟）。默认是 0。</p>
+</li>
+</ol>
+<p>注：transition中的过渡效果花费的时间和延迟时间都是以秒(s)或毫秒(ms)计。请始终设置 transition-duration 属性，否则时长为 0，就不会产生过渡效果。</p>
+<p>先来看看一个示例：</p>
+<p>一开始是一个100px*100px的蓝色矩形元素当鼠标浮动在元素上，经过3s 延迟（第二个3s），会开始匀速变化（linear），变化时间为3s（第一个3s）,最后宽度变为300px,背景颜色变为红色。</p>
+<p>示例代码如下：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">&quot;text/css&quot;</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css">        <span class="selector-tag">div</span>&#123;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">width</span>: <span class="number">100px</span>;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">height</span>: <span class="number">100px</span>;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">background-color</span>: blue;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">transition</span>: width ,background-color ,<span class="number">3s</span> linear <span class="number">3s</span>;</span></span><br><span class="line"><span class="language-css">        &#125;</span></span><br><span class="line"><span class="language-css">        <span class="selector-tag">div</span><span class="selector-pseudo">:hover</span>&#123;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">width</span>: <span class="number">300px</span>;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">background-color</span>: red;</span></span><br><span class="line"><span class="language-css">        &#125;</span></span><br><span class="line"><span class="language-css">    </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="1-2-与动画的区别"><a href="#1-2-与动画的区别" class="headerlink" title="1.2 与动画的区别"></a>1.2 与动画的区别</h2><p>不同于动画，虽然它们都是随着时间改变元素的属性值，但是transition（过渡）需要触发一个事件才会随着时间改变其CSS属性；animation在不需要触发任何事件的情况下，也可以显式的随时间变化来改变元素CSS属性，达到一种动画的效果</p>
+<ul>
+<li>动画不需要事件触发，过渡需要。</li>
+<li>过渡只有一组（两个：开始-结束） 关键帧，动画可以设置多个。</li>
+</ul>
+<h1 id="2-动画"><a href="#2-动画" class="headerlink" title="2. 动画"></a>2. 动画</h1><p>通过 CSS3，我们能够创建动画，这可以在许多网页中取代动画图片、Flash 动画以及 JavaScript。动画是使元素从一种样式逐渐变化为另一种样式的效果。您可以改变任意多的样式任意多的次数。</p>
+<h2 id="2-1-属性"><a href="#2-1-属性" class="headerlink" title="2.1 属性"></a>2.1 属性</h2><ol>
+<li><code>animation</code>,是一个简写属性，用于设置动画属性<ul>
+<li>必须指定动画的关键帧名称和持续时间</li>
+<li>如果要写延迟，则两个时间中第一个是持续时间，第二个是延迟时间</li>
+</ul>
+</li>
+<li><code>animation-name</code>,指定动画的关键帧名称</li>
+<li><code>animation-duration</code>,指定动画效果的持续时间</li>
+<li><code>animation-timing-function</code>,动画的时序函数，详细参考过渡</li>
+<li><code>animation-iteration-count</code>,动画执行的次数,其中<code>infinite</code>是无限次</li>
+<li><code>animation-delay</code>动画效果的延迟，等待一段时间后在执行动画</li>
+<li><code>animation-play-state</code> 设置动画的执行状态<ul>
+<li><code>running</code> 动画执行，默认值</li>
+<li><code>paused</code> 动画暂停</li>
+</ul>
+</li>
+<li><code>animation-fill-mode</code> 动画的填充模式<ul>
+<li><code>none</code> 动画执行完毕，元素回到原来位置，默认值</li>
+<li><code>forwards</code> 动画执行完毕，元素会停止在动画结束的位置</li>
+<li><code>backwards</code> 动画延时等待时，元素就会处于开始位置</li>
+<li><code>both</code> 结合了forwards和backwards</li>
+</ul>
+</li>
+<li><code>animation-direction</code>,定义是否应该轮流反向播放动画。<ul>
+<li><code>normal</code> 每个循环内动画向前循环，换言之，每个动画循环结束，动画重置到起点重新开始，这是默认属性。</li>
+<li><code>alternate</code> 动画交替反向运行，反向运行时，动画按步后退，同时，带时间功能的函数也反向，比如，ease-in 在反向时成为ease-out。</li>
+<li><code>reverse</code> 反向运行动画，每周期结束动画由尾到头运行。</li>
+<li><code>alternate-reverse</code> 反向交替， 反向开始交替动画,第一次运行时是反向的，然后下一次是正向，后面依次循环。</li>
+</ul>
+</li>
+</ol>
+<p>这里再给一个简单的代码例子，有兴趣可以自己运行看看效果。</p>
+<p>示例代码如下：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css">        <span class="selector-tag">div</span>&#123;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">width</span>: <span class="number">100px</span>;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">height</span>:<span class="number">100px</span>;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">background</span>: blue;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">animation</span>: donghua <span class="number">3s</span> linear <span class="number">1ms</span> infinite normal;</span></span><br><span class="line"><span class="language-css">        &#125;</span></span><br><span class="line"><span class="language-css">        <span class="comment">/* div:hover&#123;</span></span></span><br><span class="line"><span class="comment"><span class="language-css">            </span></span></span><br><span class="line"><span class="comment"><span class="language-css">        &#125; */</span></span></span><br><span class="line"><span class="language-css">        <span class="keyword">@keyframes</span> donghua&#123;</span></span><br><span class="line"><span class="language-css">            <span class="selector-tag">from</span>&#123;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">background</span>: yellow;</span></span><br><span class="line"><span class="language-css">            &#125;</span></span><br><span class="line"><span class="language-css">            <span class="number">50%</span>&#123;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">background</span>: brown;</span></span><br><span class="line"><span class="language-css">            &#125;</span></span><br><span class="line"><span class="language-css">            <span class="selector-tag">to</span>&#123;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">width</span>: <span class="number">300px</span>;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">background</span>: red;</span></span><br><span class="line"><span class="language-css">            &#125;</span></span><br><span class="line"><span class="language-css">        &#125;</span></span><br><span class="line"><span class="language-css">    </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="3-变换"><a href="#3-变换" class="headerlink" title="3. 变换"></a>3. 变换</h1><p>通过 CSS3 变换，我们能够对元素进行移动、缩放、转动、拉长或拉伸。使用transform属性为元素应用变换。</p>
+<p>translate(长度值或者百分比) 在水平方向上、垂直方向上平移元素。<code>transform</code>属性可以指定为关键字值<code>none</code> 或一个或多个<code>&lt;transform-function&gt;</code>值。</p>
+<h2 id="3-1-常用的-："><a href="#3-1-常用的-：" class="headerlink" title="3.1 常用的**："></a>3.1 常用的*<transform-function>*：</h2><ol>
+<li><p>2D平移—translate()、translateX()、translateY()</p>
+<p>用来在平面上平移一个元素。可以使用translate(tx) 或translate(tx, ty)，第一个参数指定x轴的平移距离，第二个参数指定y轴的平移距离。如果只指定了一个参数，那么X和Y轴都采用整个值。</p>
+</li>
+<li><p>3D平移—translate3d()和translateZ()</p>
+<p>用于在3D空间中移动元素的位置。</p>
+</li>
+<li><p>旋转—rotate()</p>
+<ul>
+<li><code>rotateX()</code> 沿着x轴旋转</li>
+<li><code>rotateY()</code> 沿着y轴旋转</li>
+<li><code>rotateZ()</code> 沿着z轴旋转</li>
+<li><code>backface-visibility</code> 属性可以设置元素背面是否可见，可以隐藏旋转元素的背面。可选值：<ul>
+<li><code>visible</code> 默认值，背面可见</li>
+<li><code>hidden</code> 背面不可见</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>缩放—scale()，</p>
+<p>可以用来改变元素的大小。 它可以增大或减小元素的大小。</p>
+<ul>
+<li><code>scaleX()</code> 水平方向缩放</li>
+<li><code>scaleY()</code> 垂直方向缩放</li>
+<li><code>scale()</code> 双方向的缩放</li>
+</ul>
+</li>
+<li><p>拉伸—skew()</p>
+<p>是一种用于拉伸的函数，该函数会使得在每个方向上扭曲元素上的每个点以一定角度.skew(ax) 或skew(ax, ay)。（如果觉得难以理解可以去看看这篇博客—<a target="_blank" rel="noopener" href="https://www.cnblogs.com/mr-yuan/p/5899299.html">奋斗小青年的博客</a>）</p>
+</li>
+</ol>
+</div></section><ul class="post-copyright"><li class="post-copyright-author"><strong>本文作者：</strong>山泽君</li><li class="post-copyright-link"><strong>本文链接：</strong><a href="http://example.com/posts/2f13e15b/" title="Web前端学习之CSS3学习（九）过渡、动画、变换">http://example.com/posts/2f13e15b/</a></li><li class="post-copyright-license"><strong>版权声明：</strong>本博客所有文章除特别声明外，均默认采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener" title="CC BY-NC-SA 4.0 "><svg class="icon"><use xlink:href="#icon-creative-commons-line"></use></svg><svg class="icon"><use xlink:href="#icon-creative-commons-by-line"></use></svg><svg class="icon"><use xlink:href="#icon-creative-commons-nc-line"></use></svg><svg class="icon"><use xlink:href="#icon-creative-commons-sa-line"></use></svg></a> 许可协议。</li></ul></article><div class="post-nav"><div class="post-nav-item"><a class="post-nav-prev" href="/posts/3425a3db/" rel="prev" title="Web前端学习之CSS3学习（十）flex弹性盒子布局"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-arrow-left-s-line"></use></svg><span class="post-nav-text">Web前端学习之CSS3学习（十）flex弹性盒子布局</span></a></div><div class="post-nav-item"><a class="post-nav-next" href="/posts/524b0dcc/" rel="next" title="Web前端学习之CSS3学习（八）背景颜色渐变属性（Gradients）"><span class="post-nav-text">Web前端学习之CSS3学习（八）背景颜色渐变属性（Gradients）</span><svg class="icon" aria-hidden="true"><use xlink:href="#icon-arrow-right-s-line"></use></svg></a></div></div></div><div class="hty-card" id="comment"><div class="comment-tooltip text-center"><span>若您想及时得到回复提醒，建议跳转 GitHub Issues 评论</span><br><a class="hty-button hty-button--raised" id="github-issues" target="_blank" rel="noopener" href="https://github.com/feng-mou-mou/feng-mou-mou.github.io/issues?q=is:issue+Web前端学习之CSS3学习（九）过渡、动画、变换">GitHub Issues</a></div><div id="waline"></div><script>window.CONFIG.waline.config.path = "/posts/2f13e15b/"</script><div class="js-Pjax"><script src="/js/comments/waline.js" type="module" defer></script></div></div></main><footer class="sidebar-translate" id="footer"><div class="beian"><a rel="noopener" href="https://beian.miit.gov.cn/" target="_blank"></a></div><div class="copyright"><span>&copy; 2019 – 2024 </span><span class="with-love" id="animate"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-cloud-line"></use></svg></span><span class="author"> 山泽君</span></div><div class="powered"><span>由 <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> 驱动 v5.4.2</span><span class="footer-separator">|</span><span>主题 - <a rel="noopener" href="https://github.com/YunYouJun/hexo-theme-yun" target="_blank"><span>Yun</span></a> v1.8.11</span></div></footer><a class="hty-icon-button" id="back-to-top" aria-label="back-to-top" href="#"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-arrow-up-s-line"></use></svg><svg class="progress-circle-container" viewBox="0 0 100 100"><circle class="progress-circle" id="progressCircle" cx="50" cy="50" r="48" fill="none" stroke="#349696" stroke-width="2" stroke-linecap="round"></circle></svg></a><a class="popup-trigger hty-icon-button icon-search" id="search" href="javascript:;" title="搜索"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-search-line"></use></svg></span></a><script>window.addEventListener("DOMContentLoaded", () => {
+  // Handle and trigger popup window
+  document.querySelector(".popup-trigger").addEventListener("click", () => {
+    document.querySelector(".popup").classList.add("show");
+    setTimeout(() => {
+      document.querySelector(".search-input").focus();
+    }, 100);
+  });
+
+  // Monitor main search box
+  const onPopupClose = () => {
+    document.querySelector(".popup").classList.remove("show");
+  };
+
+  document.querySelector(".popup-btn-close").addEventListener("click", () => {
+    onPopupClose();
+  });
+
+  window.addEventListener("keyup", event => {
+    if (event.key === "Escape") {
+      onPopupClose();
+    }
+  });
+});
+</script><script src="/js/search/local-search.js" defer type="module"></script><div class="popup search-popup"><div class="search-header"><span class="popup-btn-close close-icon hty-icon-button"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-close-line"></use></svg></span></div><div class="search-input-container"><input class="search-input" id="local-search-input" type="text" placeholder="搜索..." value=""></div><div id="local-search-result"></div></div></div><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body></html>
