@@ -1,0 +1,303 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="theme-color" content="#349696"><meta name="author" content="山泽君"><meta name="copyright" content="山泽君"><meta name="generator" content="Hexo 5.4.2"><meta name="theme" content="hexo-theme-yun"><title>数据结构刷题推荐（1）线性表 | 山泽君的小站</title><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@900&amp;display=swap" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/star-markdown-css@0.2.4/dist/yun/yun-markdown.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prism-theme-vars/base.css"><script src="//at.alicdn.com/t/font_1140697_dxory92pb0h.js" async></script><script src="https://cdn.jsdelivr.net/npm/@unocss/runtime/mini.global.js"></script><script src="https://cdn.jsdelivr.net/npm/scrollreveal/dist/scrollreveal.min.js" defer></script><script>function initScrollReveal() {
+  [".post-card",".markdown-body img"].forEach((target)=> {
+    ScrollReveal().reveal(target);
+  })
+}
+document.addEventListener("DOMContentLoaded", initScrollReveal);
+document.addEventListener("pjax:success", initScrollReveal);
+</script><link rel="icon" type="image/svg+xml" href="/yun.svg"><link rel="mask-icon" href="/yun.svg" color="#349696"><link rel="preload" href="/css/hexo-theme-yun.css" as="style"><link rel="prefetch" href="/js/sidebar.js" as="script"><link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin><script id="yun-config">
+    window.Yun = {}
+    window.CONFIG = {"hostname":"example.com","root":"/","title":"山泽君的小站","version":"1.8.11","mode":"auto","copycode":true,"page":{"isPost":true},"i18n":{"placeholder":"搜索...","empty":"找不到您查询的内容: ${query}","hits":"找到 ${hits} 条结果","hits_time":"找到 ${hits} 条结果（用时 ${time} 毫秒）"},"anonymous_image":"https://cdn.jsdelivr.net/gh/YunYouJun/cdn/img/avatar/none.jpg","say":{"api":"https://el-bot-api.vercel.app/api/words/young"},"local_search":{"path":"/search.xml"},"fireworks":{"colors":null},"waline":{"config":{"enable":true,"serverURL":"https://blog-comment-76gk7ynrp-feng-mou-mou.vercel.app/","comment":true,"visitor":true,"placeholder":"黑泽白泽都可以发表意见~~","emoji":["https://cdn.jsdelivr.net/gh/walinejs/emojis@latest/bilibili/","https://cdn.jsdelivr.net/gh/walinejs/emojis@latest/weibo/","https://cdn.jsdelivr.net/gh/walinejs/emojis@latest/qq/"],"locale":{"placeholder":"填写邮箱，可以收到回复通知哦～"},"requiredMeta":["nick"],"el":"#waline","lang":"zh-CN"},"cdn":"https://cdn.jsdelivr.net/npm/@waline/client/dist/Waline.min.js","dark":"html.dark"},"vendors":{"darken":"https://cdn.jsdelivr.net/npm/darken@1.5.0"}};
+  </script><link rel="stylesheet" href="/css/hexo-theme-yun.css"><script src="/js/hexo-theme-yun.js" type="module"></script><link rel="alternate" href="/atom.xml" title="山泽君的小站" type="application/atom+xml"><link rel="preconnect" href="https://www.google-analytics.com" crossorigin><script async src="https://www.googletagmanager.com/gtag/js?id=G-1LL0D86CY9"></script><script>if (CONFIG.hostname === location.hostname) {
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-1LL0D86CY9');
+}</script><script data-ad-client="ca-pub-2245427233262012" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><script>(function(){
+  var bp = document.createElement('script');
+  var curProtocol = window.location.protocol.split(':')[0];
+  if (curProtocol === 'https') {
+    bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+  }
+  else {
+    bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+  }
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(bp, s);
+})();</script><!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','');</script><!-- End Google Tag Manager --><meta name="description" content="LeetCode（按分类排序，推荐刷题列表 ★★★）01. 数组数组基础题目数组操作题目   题号 标题 标签 难度    0189 轮转数组 数组、数学、双指针 中等   0066 加一 数组、数学 简单   0724 寻找数组的中心下标 数组、前缀和 简单   0485 最大连续 1 的个数 数组 简单   0238 除自身以外数组的乘积 数组、前缀和 中等   二维数组题目   题号 标题">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据结构刷题推荐（1）线性表">
+<meta property="og:url" content="http://example.com/posts/5d651eb9/index.html">
+<meta property="og:site_name" content="山泽君的小站">
+<meta property="og:description" content="LeetCode（按分类排序，推荐刷题列表 ★★★）01. 数组数组基础题目数组操作题目   题号 标题 标签 难度    0189 轮转数组 数组、数学、双指针 中等   0066 加一 数组、数学 简单   0724 寻找数组的中心下标 数组、前缀和 简单   0485 最大连续 1 的个数 数组 简单   0238 除自身以外数组的乘积 数组、前缀和 中等   二维数组题目   题号 标题">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-08-25T04:14:42.000Z">
+<meta property="article:modified_time" content="2024-08-25T04:44:40.762Z">
+<meta property="article:author" content="山泽君">
+<meta property="article:tag" content="数据结构刷题">
+<meta name="twitter:card" content="summary"><script>(function() {
+  const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+  const setting = localStorage.getItem('darken-mode') || 'auto'
+  if (setting === 'dark' || (prefersDark && setting !== 'light'))
+    document.documentElement.classList.toggle('dark', true)
+})()</script></head><body><script defer src="https://cdn.jsdelivr.net/npm/animejs@latest"></script><script defer src="/js/ui/fireworks.js" type="module"></script><canvas class="fireworks"></canvas><div class="container"><a class="sidebar-toggle hty-icon-button" id="menu-btn"><div class="hamburger hamburger--spin" type="button"><span class="hamburger-box"><span class="hamburger-inner"></span></span></div></a><div class="sidebar-toggle sidebar-overlay"></div><aside class="sidebar"><script src="/js/sidebar.js" type="module"></script><ul class="sidebar-nav"><li class="sidebar-nav-item sidebar-nav-toc hty-icon-button sidebar-nav-active" data-target="post-toc-wrap" title="文章目录"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-list-ordered"></use></svg></li><li class="sidebar-nav-item sidebar-nav-overview hty-icon-button" data-target="site-overview-wrap" title="站点概览"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-passport-line"></use></svg></li></ul><div class="sidebar-panel" id="site-overview-wrap"><div class="site-info fix-top"><a class="site-author-avatar" href="/about/" title="山泽君"><img width="96" loading="lazy" src="/img/avatar.png" alt="山泽君"><span class="site-author-status" title="Looking for dawn.">🌊</span></a><div class="site-author-name"><a href="/about/">山泽君</a></div><span class="site-name">山泽君的小站</span><sub class="site-subtitle"></sub><div class="site-desciption"></div></div><nav class="site-state"><a class="site-state-item hty-icon-button icon-home" href="/" title="首页"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-home-4-line"></use></svg></span></a><div class="site-state-item"><a href="/archives/" title="归档"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-archive-line"></use></svg></span><span class="site-state-item-count">48</span></a></div><div class="site-state-item"><a href="/categories/" title="分类"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-folder-2-line"></use></svg></span><span class="site-state-item-count">6</span></a></div><div class="site-state-item"><a href="/tags/" title="标签"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-price-tag-3-line"></use></svg></span><span class="site-state-item-count">15</span></a></div><a class="site-state-item hty-icon-button" href="/about/#comment" title="留言板"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-clipboard-line"></use></svg></span></a></nav><hr style="margin-bottom:0.5rem"><div class="links-of-author"><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://github.com/feng-mou-mou" title="GitHub" target="_blank" style="color:#6e5494"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-github-line"></use></svg></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="mailto:172425937@qq.com" title="E-Mail" target="_blank" style="color:#8E71C1"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-mail-line"></use></svg></a></div><hr style="margin:0.5rem 1rem"><div class="links"><a class="links-item hty-icon-button" href="/links/" title="我的小伙伴们" style="color:dodgerblue"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-genderless-line"></use></svg></a></div><br><a class="links-item hty-icon-button" id="toggle-mode-btn" href="javascript:;" title="Mode" style="color: #f1cb64"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-contrast-2-line"></use></svg></a></div><div class="sidebar-panel sidebar-panel-active" id="post-toc-wrap"><div class="post-toc"><div class="post-toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#LeetCode%EF%BC%88%E6%8C%89%E5%88%86%E7%B1%BB%E6%8E%92%E5%BA%8F%EF%BC%8C%E6%8E%A8%E8%8D%90%E5%88%B7%E9%A2%98%E5%88%97%E8%A1%A8-%E2%98%85%E2%98%85%E2%98%85%EF%BC%89"><span class="toc-number">1.</span> <span class="toc-text">LeetCode（按分类排序，推荐刷题列表 ★★★）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#01-%E6%95%B0%E7%BB%84"><span class="toc-number">1.1.</span> <span class="toc-text">01. 数组</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E7%BB%84%E5%9F%BA%E7%A1%80%E9%A2%98%E7%9B%AE"><span class="toc-number">1.1.1.</span> <span class="toc-text">数组基础题目</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E7%BB%84%E6%93%8D%E4%BD%9C%E9%A2%98%E7%9B%AE"><span class="toc-number">1.1.1.1.</span> <span class="toc-text">数组操作题目</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84%E9%A2%98%E7%9B%AE"><span class="toc-number">1.1.1.2.</span> <span class="toc-text">二维数组题目</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#02-%E9%93%BE%E8%A1%A8"><span class="toc-number">1.2.</span> <span class="toc-text">02. 链表</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%93%BE%E8%A1%A8%E7%BB%8F%E5%85%B8%E9%A2%98%E7%9B%AE"><span class="toc-number">1.2.1.</span> <span class="toc-text">链表经典题目</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#03-%E6%A0%88"><span class="toc-number">1.3.</span> <span class="toc-text">03. 栈</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%88%E5%9F%BA%E7%A1%80%E9%A2%98%E7%9B%AE"><span class="toc-number">1.3.1.</span> <span class="toc-text">栈基础题目</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#04-%E9%98%9F%E5%88%97"><span class="toc-number">1.4.</span> <span class="toc-text">04. 队列</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%98%9F%E5%88%97%E5%9F%BA%E7%A1%80%E9%A2%98%E7%9B%AE"><span class="toc-number">1.4.1.</span> <span class="toc-text">队列基础题目</span></a></li></ol></li></ol></li></ol></div></div></div></aside><main class="sidebar-translate" id="content"><div id="post"><article class="hty-card post-block" itemscope itemtype="https://schema.org/Article" style="--smc-primary:#349696;"><link itemprop="mainEntityOfPage" href="http://example.com/posts/5d651eb9/"><span hidden itemprop="author" itemscope itemtype="https://schema.org/Person"><meta itemprop="name" content="山泽君"><meta itemprop="description"></span><span hidden itemprop="publisher" itemscope itemtype="https://schema.org/Organization"><meta itemprop="name" content="山泽君的小站"></span><header class="post-header"><h1 class="post-title" itemprop="name headline">数据结构刷题推荐（1）线性表</h1><div class="post-meta"><div class="post-time"><span class="post-meta-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-calendar-line"></use></svg></span> <time title="创建时间：2024-08-25 12:14:42" itemprop="dateCreated datePublished" datetime="2024-08-25T12:14:42+08:00">2024-08-25</time></div><span class="leancloud_visitors" id="/posts/5d651eb9/" data-flag-title="数据结构刷题推荐（1）线性表"><span class="post-meta-divider">-</span><span class="post-meta-item-icon" title="阅读次数"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-eye-line"></use></svg> <span class="leancloud-visitors-count"></span></span></span><span class="post-meta-divider">-</span><a href="#comment"><span class="post-meta-item-icon" title="评论数"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-chat-3-line"></use></svg> <span class="waline-comment-count" id="/posts/5d651eb9/"></span></span></a><div class="post-classify"><span class="post-category"> <span class="post-meta-item-icon" style="margin-right:3px;"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-folder-line"></use></svg></span><span itemprop="about" itemscope itemtype="https://schema.org/Thing"><a class="category-item" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/" style="--text-color:var(--hty-text-color)" itemprop="url" rel="index"><span itemprop="text">数据结构和算法</span></a></span></span><span class="post-tag"><span class="post-meta-divider">-</span><a class="tag-item" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%88%B7%E9%A2%98/" style="--text-color:var(--hty-text-color)"><span class="post-meta-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-price-tag-3-line"></use></svg></span><span class="tag-name">数据结构刷题</span></a></span></div></div></header><section class="post-body" itemprop="articleBody"><div class="post-content markdown-body"><h1 id="LeetCode（按分类排序，推荐刷题列表-★★★）"><a href="#LeetCode（按分类排序，推荐刷题列表-★★★）" class="headerlink" title="LeetCode（按分类排序，推荐刷题列表 ★★★）"></a>LeetCode（按分类排序，推荐刷题列表 ★★★）</h1><h2 id="01-数组"><a href="#01-数组" class="headerlink" title="01. 数组"></a>01. 数组</h2><h3 id="数组基础题目"><a href="#数组基础题目" class="headerlink" title="数组基础题目"></a>数组基础题目</h3><h4 id="数组操作题目"><a href="#数组操作题目" class="headerlink" title="数组操作题目"></a>数组操作题目</h4><table>
+<thead>
+<tr>
+<th align="left">题号</th>
+<th align="left">标题</th>
+<th align="left">标签</th>
+<th align="left">难度</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">0189</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/rotate-array/">轮转数组</a></td>
+<td align="left">数组、数学、双指针</td>
+<td align="left">中等</td>
+</tr>
+<tr>
+<td align="left">0066</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/plus-one/">加一</a></td>
+<td align="left">数组、数学</td>
+<td align="left">简单</td>
+</tr>
+<tr>
+<td align="left">0724</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/find-pivot-index/">寻找数组的中心下标</a></td>
+<td align="left">数组、前缀和</td>
+<td align="left">简单</td>
+</tr>
+<tr>
+<td align="left">0485</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/max-consecutive-ones/">最大连续 1 的个数</a></td>
+<td align="left">数组</td>
+<td align="left">简单</td>
+</tr>
+<tr>
+<td align="left">0238</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/product-of-array-except-self/">除自身以外数组的乘积</a></td>
+<td align="left">数组、前缀和</td>
+<td align="left">中等</td>
+</tr>
+</tbody></table>
+<h4 id="二维数组题目"><a href="#二维数组题目" class="headerlink" title="二维数组题目"></a>二维数组题目</h4><table>
+<thead>
+<tr>
+<th align="left">题号</th>
+<th align="left">标题</th>
+<th align="left">标签</th>
+<th align="left">难度</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">0498</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/diagonal-traverse/">对角线遍历</a></td>
+<td align="left">数组、矩阵、模拟</td>
+<td align="left">中等</td>
+</tr>
+<tr>
+<td align="left">0048</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/rotate-image/">旋转图像</a></td>
+<td align="left">数组、数学、矩阵</td>
+<td align="left">中等</td>
+</tr>
+<tr>
+<td align="left">0073</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/set-matrix-zeroes/">矩阵置零</a></td>
+<td align="left">数组、哈希表、矩阵</td>
+<td align="left">中等</td>
+</tr>
+<tr>
+<td align="left">0054</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/spiral-matrix/">螺旋矩阵</a></td>
+<td align="left">数组、矩阵、模拟</td>
+<td align="left">中等</td>
+</tr>
+<tr>
+<td align="left">0059</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/spiral-matrix-ii/">螺旋矩阵 II</a></td>
+<td align="left">数组、矩阵、模拟</td>
+<td align="left">中等</td>
+</tr>
+<tr>
+<td align="left">0289</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/game-of-life/">生命游戏</a></td>
+<td align="left">数组、矩阵、模拟</td>
+<td align="left">中等</td>
+</tr>
+</tbody></table>
+<h2 id="02-链表"><a href="#02-链表" class="headerlink" title="02. 链表"></a>02. 链表</h2><h3 id="链表经典题目"><a href="#链表经典题目" class="headerlink" title="链表经典题目"></a>链表经典题目</h3><table>
+<thead>
+<tr>
+<th align="left">题号</th>
+<th align="left">标题</th>
+<th align="left">标签</th>
+<th align="left">难度</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">0707</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/design-linked-list/">设计链表</a></td>
+<td align="left">设计、链表</td>
+<td align="left">中等</td>
+</tr>
+<tr>
+<td align="left">0083</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/remove-duplicates-from-sorted-list/">删除排序链表中的重复元素</a></td>
+<td align="left">链表</td>
+<td align="left">简单</td>
+</tr>
+<tr>
+<td align="left">0082</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/remove-duplicates-from-sorted-list-ii/">删除排序链表中的重复元素 II</a></td>
+<td align="left">链表、双指针</td>
+<td align="left">中等</td>
+</tr>
+<tr>
+<td align="left">0206</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/reverse-linked-list/">反转链表</a></td>
+<td align="left">递归、链表</td>
+<td align="left">简单</td>
+</tr>
+<tr>
+<td align="left">0203</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/remove-linked-list-elements/">移除链表元素</a></td>
+<td align="left">递归、链表</td>
+<td align="left">简单</td>
+</tr>
+<tr>
+<td align="left">0234</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/palindrome-linked-list/">回文链表</a></td>
+<td align="left">栈、递归、链表、双指针</td>
+<td align="left">简单</td>
+</tr>
+<tr>
+<td align="left">0061</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/rotate-list/">旋转链表</a></td>
+<td align="left">链表、双指针</td>
+<td align="left">中等</td>
+</tr>
+</tbody></table>
+<h2 id="03-栈"><a href="#03-栈" class="headerlink" title="03. 栈"></a>03. 栈</h2><h3 id="栈基础题目"><a href="#栈基础题目" class="headerlink" title="栈基础题目"></a>栈基础题目</h3><table>
+<thead>
+<tr>
+<th align="left">题号</th>
+<th align="left">标题</th>
+<th align="left">标签</th>
+<th align="left">难度</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">1047</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/remove-all-adjacent-duplicates-in-string/">删除字符串中的所有相邻重复项</a></td>
+<td align="left">栈、字符串</td>
+<td align="left">简单</td>
+</tr>
+<tr>
+<td align="left">0155</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/min-stack/">最小栈</a></td>
+<td align="left">栈、设计</td>
+<td align="left">中等</td>
+</tr>
+<tr>
+<td align="left">0020</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/valid-parentheses/">有效的括号</a></td>
+<td align="left">栈、字符串</td>
+<td align="left">简单</td>
+</tr>
+<tr>
+<td align="left">0227</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/basic-calculator-ii/">基本计算器 II</a></td>
+<td align="left">栈、数学、字符串</td>
+<td align="left">中等</td>
+</tr>
+<tr>
+<td align="left">0232</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/implement-queue-using-stacks/">用栈实现队列</a></td>
+<td align="left">栈、设计、队列</td>
+<td align="left">简单</td>
+</tr>
+<tr>
+<td align="left">0394</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/decode-string/">字符串解码</a></td>
+<td align="left"><a target="_blank" rel="noopener" href="https://github.com/itcharge/LeetCode-Py/blob/main/Solutions/0394.%20%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%A7%A3%E7%A0%81.md">Python</a></td>
+<td align="left">栈、递归、字符串</td>
+</tr>
+<tr>
+<td align="left">0032</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/longest-valid-parentheses/">最长有效括号</a></td>
+<td align="left"><a target="_blank" rel="noopener" href="https://github.com/itcharge/LeetCode-Py/blob/main/Solutions/0032.%20%E6%9C%80%E9%95%BF%E6%9C%89%E6%95%88%E6%8B%AC%E5%8F%B7.md">Python</a></td>
+<td align="left">栈、字符串、动态规划</td>
+</tr>
+<tr>
+<td align="left">0946</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/validate-stack-sequences/">验证栈序列</a></td>
+<td align="left">栈、数组、模拟</td>
+<td align="left">中等</td>
+</tr>
+<tr>
+<td align="left">剑指 Offer 06</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/cong-wei-dao-tou-da-yin-lian-biao-lcof/">从尾到头打印链表</a></td>
+<td align="left">栈、递归、链表、双指针</td>
+<td align="left">简单</td>
+</tr>
+<tr>
+<td align="left">0071</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/simplify-path/">简化路径</a></td>
+<td align="left"></td>
+<td align="left">栈、字符串</td>
+</tr>
+</tbody></table>
+<h2 id="04-队列"><a href="#04-队列" class="headerlink" title="04. 队列"></a>04. 队列</h2><h3 id="队列基础题目"><a href="#队列基础题目" class="headerlink" title="队列基础题目"></a>队列基础题目</h3><table>
+<thead>
+<tr>
+<th align="left">题号</th>
+<th align="left">标题</th>
+<th align="left">标签</th>
+<th align="left">难度</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">0622</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/design-circular-queue/">设计循环队列</a></td>
+<td align="left">设计、队列、数组、链表</td>
+<td align="left">中等</td>
+</tr>
+<tr>
+<td align="left">0346</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/moving-average-from-data-stream/">数据流中的移动平均值</a></td>
+<td align="left">设计、队列、数组、数据流</td>
+<td align="left">简单</td>
+</tr>
+<tr>
+<td align="left">0225</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/implement-stack-using-queues/">用队列实现栈</a></td>
+<td align="left">栈、设计、队列</td>
+<td align="left">简单</td>
+</tr>
+</tbody></table>
+</div></section><ul class="post-copyright"><li class="post-copyright-author"><strong>本文作者：</strong>山泽君</li><li class="post-copyright-link"><strong>本文链接：</strong><a href="http://example.com/posts/5d651eb9/" title="数据结构刷题推荐（1）线性表">http://example.com/posts/5d651eb9/</a></li><li class="post-copyright-license"><strong>版权声明：</strong>本博客所有文章除特别声明外，均默认采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener" title="CC BY-NC-SA 4.0 "><svg class="icon"><use xlink:href="#icon-creative-commons-line"></use></svg><svg class="icon"><use xlink:href="#icon-creative-commons-by-line"></use></svg><svg class="icon"><use xlink:href="#icon-creative-commons-nc-line"></use></svg><svg class="icon"><use xlink:href="#icon-creative-commons-sa-line"></use></svg></a> 许可协议。</li></ul></article><div class="post-nav"><div class="post-nav-item"><a class="post-nav-prev" href="/posts/5a84bf91/" rel="prev" title="迁移hexo博客到Mac"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-arrow-left-s-line"></use></svg><span class="post-nav-text">迁移hexo博客到Mac</span></a></div><div class="post-nav-item"><a class="post-nav-next" href="/posts/71a33465/" rel="next" title="Lua快速入门"><span class="post-nav-text">Lua快速入门</span><svg class="icon" aria-hidden="true"><use xlink:href="#icon-arrow-right-s-line"></use></svg></a></div></div></div><div class="hty-card" id="comment"><div class="comment-tooltip text-center"><span>若您想及时得到回复提醒，建议跳转 GitHub Issues 评论</span><br><a class="hty-button hty-button--raised" id="github-issues" target="_blank" rel="noopener" href="https://github.com/feng-mou-mou/feng-mou-mou.github.io/issues?q=is:issue+数据结构刷题推荐（1）线性表">GitHub Issues</a></div><div id="waline"></div><script>window.CONFIG.waline.config.path = "/posts/5d651eb9/"</script><div class="js-Pjax"><script src="/js/comments/waline.js" type="module" defer></script></div></div></main><footer class="sidebar-translate" id="footer"><div class="beian"><a rel="noopener" href="https://beian.miit.gov.cn/" target="_blank"></a></div><div class="copyright"><span>&copy; 2019 – 2024 </span><span class="with-love" id="animate"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-cloud-line"></use></svg></span><span class="author"> 山泽君</span></div><div class="powered"><span>由 <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> 驱动 v5.4.2</span><span class="footer-separator">|</span><span>主题 - <a rel="noopener" href="https://github.com/YunYouJun/hexo-theme-yun" target="_blank"><span>Yun</span></a> v1.8.11</span></div></footer><a class="hty-icon-button" id="back-to-top" aria-label="back-to-top" href="#"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-arrow-up-s-line"></use></svg><svg class="progress-circle-container" viewBox="0 0 100 100"><circle class="progress-circle" id="progressCircle" cx="50" cy="50" r="48" fill="none" stroke="#349696" stroke-width="2" stroke-linecap="round"></circle></svg></a><a class="popup-trigger hty-icon-button icon-search" id="search" href="javascript:;" title="搜索"><span class="site-state-item-icon"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-search-line"></use></svg></span></a><script>window.addEventListener("DOMContentLoaded", () => {
+  // Handle and trigger popup window
+  document.querySelector(".popup-trigger").addEventListener("click", () => {
+    document.querySelector(".popup").classList.add("show");
+    setTimeout(() => {
+      document.querySelector(".search-input").focus();
+    }, 100);
+  });
+
+  // Monitor main search box
+  const onPopupClose = () => {
+    document.querySelector(".popup").classList.remove("show");
+  };
+
+  document.querySelector(".popup-btn-close").addEventListener("click", () => {
+    onPopupClose();
+  });
+
+  window.addEventListener("keyup", event => {
+    if (event.key === "Escape") {
+      onPopupClose();
+    }
+  });
+});
+</script><script src="/js/search/local-search.js" defer type="module"></script><div class="popup search-popup"><div class="search-header"><span class="popup-btn-close close-icon hty-icon-button"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-close-line"></use></svg></span></div><div class="search-input-container"><input class="search-input" id="local-search-input" type="text" placeholder="搜索..." value=""></div><div id="local-search-result"></div></div></div><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body></html>
